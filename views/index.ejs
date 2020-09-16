@@ -10,17 +10,41 @@
 <body>
   <div>
     <h1>My Spells</h1>
-    <ul class="custom-spells">
-      <% for(let i = 0; i < customSpells.length; i++) { %>
-        <li>
-          <span class="custom-spell"><%= customSpells[i].name %> (<%=
+    <div class="custom-spells">
+      <% for (let i = 0; i < customSpells.length; i++) { %>
+        <div class="custom-spell">
+          <h3><%= customSpells[i].name %></h3>
+          <p>
+            <%= 
               customSpells[i].level === 'cantrip' ?
                 `${customSpells[i].school} cantrip` :
                 `${customSpells[i].level}-level ${customSpells[i].school}`
-            %>)</span>: <span><%= customSpells[i].desc %></span>
-        </li>
+            %>
+          </p>
+          <p>Casting Time: <%= customSpells[i].time %></p>
+          <p>Range: <%= customSpells[i].range %></p>
+          <p>Components: 
+            <%=
+              customSpells[i].components.join(', ').toUpperCase()
+            %>
+            <%=
+              customSpells[i].material ?
+                `(${customSpells[i].material})` :
+                ''
+            %>
+          </p>
+          <p>Duration: 
+            <%=
+              customSpells[i].concentration ?
+                `Concentration, ${customSpells[i].duration}` :
+                `${customSpells[i].duration}`
+            %>
+          </p>
+
+          <p><%= customSpells[i].desc %></p>
+        </div>
       <% } %>
-    </ul>
+    </div>
   </div>
 
   <div>
@@ -56,8 +80,8 @@
         <option value="9th">9</option>
       </select>
 
-      <label for="spell-casting-time">Casting Time:</label>
-      <input id="spell-casting-time" type="text" name="casting-time">
+      <label for="spell-time">Casting Time:</label>
+      <input id="spell-time" type="text" name="time">
 
       <label for="spell-range">Range:</label>
       <input id="spell-range" type="text" name="range">
@@ -66,7 +90,7 @@
       <input id="verbal" type="checkbox" name="components[]" value="v"><label for="verbal">V</label>
       <input id="somatic" type="checkbox" name="components[]" value="s"><label for="somatic">S</label>
       <input id="material" type="checkbox" name="components[]" value="m"><label for="material">M</label>
-      <input id="spell-material-component" type="text" placeholder="powdered rhubarb leaf and an adder's stomach" name="material-component">
+      <input id="spell-material" type="text" placeholder="powdered rhubarb leaf and an adder's stomach" name="material">
 
       <label for="spell-duration">Duration:</label>
       <input id="concentration" type="checkbox" name="concentration"><label for="concentration">Concentration</label>
