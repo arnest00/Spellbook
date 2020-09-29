@@ -30,7 +30,7 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
     app.get('/', (req, res) => {
       customSpellCollection.find().toArray()
         .then(results => {
-          res.render('index.ejs', { customSpells: results })
+          res.render('spells.ejs', { customSpells: results })
         })
         .catch(error => console.error(error));
     });
