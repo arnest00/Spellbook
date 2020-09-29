@@ -1,15 +1,92 @@
+$font-header-stack: 'Cormorant SC', serif;
+$font-stack: 'Geneva', sans-serif;
+$palette-primary: #a14e2f;
+$palette-secondary: #3f612d;
+$palette-tertiary: #284b63;
+$palette-light: #f7f1de;
+$palette-dark: #272127;
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  background-color: $palette-light;
+  color: $palette-dark;
+  font-family: $font-stack;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-header-stack;
+}
+
+a {
+  text-decoration: none;
+}
+
+.spell-card {
+  h3 {
+    color: $palette-primary;
+  }
+}
+
 .form-group {
   display: block;
 }
 
-#add-custom-spell {
-  h2 {
+#navbar {
+  background-color: $palette-primary;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 0.25rem $palette-dark;
+
+  ul {
+    list-style: none;
+    display: flex;
+  }
+
+  a {
+    color: $palette-light;
+    margin: 0 1rem;
+  }
+}
+
+#navbar-brand-container {
+  flex: initial;
+}
+
+#navbar-brand {
+  font-family: $font-header-stack;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#navbar-menu-container {
+  flex: auto;
+  display: flex;
+  justify-content: space-between;
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+#spells {
+  h1 {
+    text-align: center;
+  }
+}
+
+#spells-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#custom-spell {
+  h1 {
     text-align: center;
   }
 }

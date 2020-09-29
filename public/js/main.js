@@ -3,7 +3,7 @@ const deleteBtn = document.querySelector('#delete-button');
 const messageDiv = document.querySelector('#message');
 
 updateBtn.addEventListener('click', e => {
-  fetch('/custom-spells', {
+  fetch('/spells', {
     method: 'put',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -21,7 +21,7 @@ updateBtn.addEventListener('click', e => {
 });
 
 deleteBtn.addEventListener('click', e => {
-  fetch('/custom-spells', {
+  fetch('/spells', {
     method: 'delete',
     headers: { 'Content-Type': 'application/json'},
     body: JSON.stringify({

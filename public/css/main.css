@@ -4,11 +4,73 @@
   padding: 0;
 }
 
+body {
+  background-color: #f7f1de;
+  color: #272127;
+  font-family: "Geneva", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cormorant SC", serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.spell-card h3 {
+  color: #a14e2f;
+}
+
 .form-group {
   display: block;
 }
 
-#add-custom-spell h2 {
+#navbar {
+  background-color: #a14e2f;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 0.25rem #272127;
+}
+#navbar ul {
+  list-style: none;
+  display: flex;
+}
+#navbar a {
+  color: #f7f1de;
+  margin: 0 1rem;
+}
+
+#navbar-brand-container {
+  flex: initial;
+}
+
+#navbar-brand {
+  font-family: "Cormorant SC", serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+#navbar-menu-container {
+  flex: auto;
+  display: flex;
+  justify-content: space-between;
+}
+#navbar-menu-container a:hover {
+  text-decoration: underline;
+}
+
+#spells h1 {
+  text-align: center;
+}
+
+#spells-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#custom-spell h1 {
   text-align: center;
 }
 

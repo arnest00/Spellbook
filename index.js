@@ -18,7 +18,7 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
     const customSpellCollection = db.collection('custom-spells');
     
     // ====== CREATE
-    app.post('/custom-spells', (req, res) => {
+    app.post('/spells', (req, res) => {
       customSpellCollection.insertOne(req.body)
         .then(result => {
           res.redirect('/');
@@ -30,13 +30,17 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
     app.get('/', (req, res) => {
       customSpellCollection.find().toArray()
         .then(results => {
-          res.render('spells.ejs', { customSpells: results })
+          res.render('spells.ejs', { customSpells: results });
         })
         .catch(error => console.error(error));
     });
 
+    app.get('/spells/new', (req, res) => {
+      res.render('new.ejs');
+    });
+
     // ====== UPDATE
-    app.put('/custom-spells', (req, res) => {
+    app.put('/spells', (req, res) => {
       customSpellCollection.findOneAndUpdate(
         { name: { $regex: /^((?!Magic Missile).)*$/ } },
         {
@@ -56,7 +60,7 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
     });
 
     // ====== DELETE
-    app.delete('/custom-spells', (req, res) => {
+    app.delete('/spells', (req, res) => {
       customSpellCollection.deleteOne(
         { name: req.body.name }
       )
