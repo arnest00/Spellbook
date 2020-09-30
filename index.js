@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const methodOverride = require('method-override');
 const { mongoURI } = require('./config.json');
 const { ObjectId } = require('mongodb');
 
@@ -10,6 +11,7 @@ app.set('view engine', 'ejs'); // insert before any app.use, app.get, app.post m
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 
 MongoClient.connect(mongoURI, { useUnifiedTopology: true })
   .then(client => {
@@ -18,6 +20,16 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
     const db = client.db('spellbook');
     const customSpellCollection = db.collection('custom-spells');
     
+
+    // ====== INDEX
+    app.get('/', (req, res) => {
+      customSpellCollection.find().toArray()
+        .then(results => {
+          res.render('spells.ejs', { customSpells: results });
+        })
+        .catch(error => console.error(error));
+    });
+
     // ====== CREATE
     app.post('/spells', (req, res) => {
       customSpellCollection.insertOne(req.body)
@@ -27,15 +39,7 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
         .catch(error => console.error(error));
     });
 
-    // ====== READ
-    app.get('/', (req, res) => {
-      customSpellCollection.find().toArray()
-        .then(results => {
-          res.render('spells.ejs', { customSpells: results });
-        })
-        .catch(error => console.error(error));
-    });
-
+    // ====== NEW
     app.get('/spells/new', (req, res) => {
       res.render('new.ejs');
     });
@@ -43,32 +47,35 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
     // ====== EDIT
     app.get("/spells/:id/edit", (req, res) => {
       customSpellCollection.findOne({
-          // _id: "ObjectId(`${req.params.id}`)"
           '_id': ObjectId(req.params.id)
       })
         .then(results => {
-          console.log(results);
           res.render('edit.ejs', { spell: results } );
       })
       .catch(error => console.error(error));
     });
 
     // ====== UPDATE
-    app.put('/spells', (req, res) => {
+    app.put('/spells/:id', (req, res) => {
       customSpellCollection.findOneAndUpdate(
-        { name: { $regex: /^((?!Magic Missile).)*$/ } },
+        { '_id': ObjectId(req.params.id) },
         {
           $set: {
             name: req.body.name,
-            desc: req.body.desc
+            school: req.body.school,
+            level: req.body.level,
+            time: req.body.time,
+            range: req.body.range,
+            components: req.body.components,
+            material: req.body.material,
+            duration: req.body.duration,
+            desc: req.body.desc,
+            higherLevel: req.body.higherLevel,
           }
-        },
-        {
-          upsert: true
         }
       )
         .then(result => {
-          res.json('Success!');
+          res.redirect('/');
         })
         .catch(error => console.error(error));
     });
