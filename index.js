@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const { mongoURI } = require('./config.json');
+const { ObjectId } = require('mongodb');
 
 const app = express();
 
@@ -37,6 +38,19 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
 
     app.get('/spells/new', (req, res) => {
       res.render('new.ejs');
+    });
+
+    // ====== EDIT
+    app.get("/spells/:id/edit", (req, res) => {
+      customSpellCollection.findOne({
+          // _id: "ObjectId(`${req.params.id}`)"
+          '_id': ObjectId(req.params.id)
+      })
+        .then(results => {
+          console.log(results);
+          res.render('edit.ejs', { spell: results } );
+      })
+      .catch(error => console.error(error));
     });
 
     // ====== UPDATE

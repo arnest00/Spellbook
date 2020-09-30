@@ -1,0 +1,85 @@
+<%- include('./partials/header') %>
+
+  <div id="custom-spell">
+    <h1>Edit <%= spell.name %></h1>
+    <div id="custom-spell-form-container">
+      <form action="/spells/<%= spell._id %>?_method=PUT" method="POST">
+
+        <div class="form-group">
+          <label for="spell-name">Name:</label>
+          <input id="spell-name" type="text" value="<%= spell.name %>" name="name">
+        </div>
+
+        <div class="form-group">
+          <label for="spell-schools">School:</label>
+          <select id="spell-schools" name="school">
+            <option value="abjuration">Abjuration</option>
+            <option value="conjuration">Conjuration</option>
+            <option value="divination">Divination</option>
+            <option value="enchantment">Enchantment</option>
+            <option value="evocation">Evocation</option>
+            <option value="illusion">Illusion</option>
+            <option value="necromancy">Necromancy</option>
+            <option value="transmutation">Transmutation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="spell-levels">Level:</label>
+          <select id="spell-levels" name="level">
+            <option value="0th">Cantrip</option>
+            <option value="1st">1</option>
+            <option value="2nd">2</option>
+            <option value="3rd">3</option>
+            <option value="4th">4</option>
+            <option value="5th">5</option>
+            <option value="6th">6</option>
+            <option value="7th">7</option>
+            <option value="8th">8</option>
+            <option value="9th">9</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="spell-time">Casting Time:</label>
+          <input id="spell-time" type="text" value="<%= spell.time %>" name="time">
+        </div>
+
+        <div class="form-group">
+          <label for="spell-range">Range:</label>
+          <input id="spell-range" type="text" value="<%= spell.range %>" name="range">
+        </div>
+
+        <div class="div form-group">
+          <span id="spell-components">Components:</span>
+          <input id="verbal" type="checkbox" name="components[]" value="v"><label for="verbal">V</label>
+          <input id="somatic" type="checkbox" name="components[]" value="s"><label for="somatic">S</label>
+          <input id="material" type="checkbox" name="components[]" value="m"><label for="material">M</label>
+          <input id="spell-material" type="text" value="<%= spell.material %>" name="material">
+        </div>
+
+        <div class="form-group">
+          <label for="spell-duration">Duration:</label>
+          <input id="concentration" type="checkbox" value="<%= spell.concentration %>" name="concentration"><label for="concentration">Concentration</label>
+          <input id="spell-duration" type="text" value="<%= spell.duration %>" name="duration">
+        </div>
+
+        <div class="form-group">
+          <label for="spell-desc">Description:</label>
+          <textarea id="spell-desc" cols="30" rows="10" name="desc"><%= spell.desc %></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="spell-higher-level">At Higher Level:</label>
+          <textarea id="spell-desc" cols="30" rows="5" name="higherLevel"><%= spell.higherLevel %></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <%- include('./partials/footer') %>
