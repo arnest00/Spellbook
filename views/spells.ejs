@@ -2,50 +2,72 @@
 
   <div id="spells">
     <h1>My Spells</h1>
-    <div id="spells-container">
-      <% for (let i = 0; i < customSpells.length; i++) { %>
-        <div class="spell-card">
-          <h3><%= customSpells[i].name %></h3>
 
-          <p><em><%= 
-            customSpells[i].level === 'cantrip' ?
-              `${customSpells[i].school} cantrip` :
-              `${customSpells[i].level}-level ${customSpells[i].school}`
-          %></em></p>
+    <% for (let level = 0; level <= 9; level++) { %>
+      <h2><% switch (level) {
+          case 0: %>
+            Cantrips
+            <% break;
+          case 1: %>
+            1st-Level
+            <% break;
+          case 2: %>
+            2nd-Level
+            <% break;
+          case 3: %>
+            3rd-Level
+            <% break;
+          default: %>
+            <%= level %>th-Level
+      <% } %></h2>
 
-          <p><strong>Casting Time:</strong> <%=
-            customSpells[i].time
-          %></p>
+      <div class="spells-container">
+        <% for (let spell = 0; spell < customSpells.length; spell++) { %>
+          <% if (Number(customSpells[spell].level.charAt(0)) === level) { %>
+            <div class="spell-card">
+              <h3><%= customSpells[spell].name %></h3>
 
-          <p><strong>Range:</strong> <%=
-            customSpells[i].range
-          %></p>
-
-          <p><strong>Components:</strong> <%=
-            customSpells[i].components.join(', ').toUpperCase()
-          %><%=
-            customSpells[i].material ?
-              `(${customSpells[i].material})` :
-              ''
-          %></p>
-
-          <p><strong>Duration:</strong> <%=
-            customSpells[i].concentration ?
-              `Concentration, ${customSpells[i].duration}` :
-              `${customSpells[i].duration}`
-          %></p>
-
-          <p><%= customSpells[i].desc %></p>
-
-          <% if (customSpells[i].higherLevel) { %>
-            <p><strong>At Higher Levels.</strong> <%=
-              customSpells[i].higherLevel
-            %></p>
+              <p><em><%=
+                customSpells[spell].level === '0th' ?
+                  `${customSpells[spell].school} cantrip` :
+                  `${customSpells[spell].level}-level ${customSpells[spell].school}`
+              %></em></p>
+    
+              <p><strong>Casting Time:</strong> <%=
+                customSpells[spell].time
+              %></p>
+    
+              <p><strong>Range:</strong> <%=
+                customSpells[spell].range
+              %></p>
+    
+              <p><strong>Components:</strong> <%=
+                customSpells[spell].components.join(', ').toUpperCase()
+              %> <%=
+                customSpells[spell].material ?
+                  `(${customSpells[spell].material})` :
+                  ''
+              %></p>
+    
+              <p><strong>Duration:</strong> <%=
+                customSpells[spell].concentration ?
+                  `Concentration, ${customSpells[spell].duration}` :
+                  `${customSpells[spell].duration}`
+              %></p>
+    
+              <p><%= customSpells[spell].desc %></p>
+    
+              <% if (customSpells[spell].higherLevel) { %>
+                <p><strong>At Higher Levels.</strong> <%=
+                  customSpells[spell].higherLevel
+                %></p>
+              <% } %>
+            </div>
           <% } %>
+        <% } %>
+      </div>
 
-        </div>
-      <% } %>
-    </div>
+    <% } %>
   </div>
 
   <div>

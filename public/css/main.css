@@ -14,8 +14,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Cormorant SC", serif;
 }
 
+h2 {
+  margin: 0.34em 0;
+}
+
 a {
   text-decoration: none;
+}
+
+.spells-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .spell-card h3 {
@@ -63,11 +72,6 @@ a {
 
 #spells h1 {
   text-align: center;
-}
-
-#spells-container {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 #custom-spell h1 {
