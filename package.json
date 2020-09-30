@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "scss": "sass --watch ./sass:public/css"
+    "style": "sass --watch ./sass:public/css"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "mongodb": "^3.6.0"
   },
   "devDependencies": {
+    "ejs-lint": "^1.1.0",
     "nodemon": "^2.0.4"
   }
 }

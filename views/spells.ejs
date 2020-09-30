@@ -6,34 +6,43 @@
       <% for (let i = 0; i < customSpells.length; i++) { %>
         <div class="spell-card">
           <h3><%= customSpells[i].name %></h3>
-          <p><em>
-            <%= 
-              customSpells[i].level === 'cantrip' ?
-                `${customSpells[i].school} cantrip` :
-                `${customSpells[i].level}-level ${customSpells[i].school}`
-            %>
-          </em></p>
-          <p>Casting Time: <%= customSpells[i].time %></p>
-          <p>Range: <%= customSpells[i].range %></p>
-          <p>Components: 
-            <%=
-              customSpells[i].components.join(', ').toUpperCase()
-            %>
-            <%=
-              customSpells[i].material ?
-                `(${customSpells[i].material})` :
-                ''
-            %>
-          </p>
-          <p>Duration: 
-            <%=
-              customSpells[i].concentration ?
-                `Concentration, ${customSpells[i].duration}` :
-                `${customSpells[i].duration}`
-            %>
-          </p>
+
+          <p><em><%= 
+            customSpells[i].level === 'cantrip' ?
+              `${customSpells[i].school} cantrip` :
+              `${customSpells[i].level}-level ${customSpells[i].school}`
+          %></em></p>
+
+          <p><strong>Casting Time:</strong> <%=
+            customSpells[i].time
+          %></p>
+
+          <p><strong>Range:</strong> <%=
+            customSpells[i].range
+          %></p>
+
+          <p><strong>Components:</strong> <%=
+            customSpells[i].components.join(', ').toUpperCase()
+          %><%=
+            customSpells[i].material ?
+              `(${customSpells[i].material})` :
+              ''
+          %></p>
+
+          <p><strong>Duration:</strong> <%=
+            customSpells[i].concentration ?
+              `Concentration, ${customSpells[i].duration}` :
+              `${customSpells[i].duration}`
+          %></p>
 
           <p><%= customSpells[i].desc %></p>
+
+          <% if (customSpells[i].higherLevel) { %>
+            <p><strong>At Higher Levels.</strong> <%=
+              customSpells[i].higherLevel
+            %></p>
+          <% } %>
+
         </div>
       <% } %>
     </div>
