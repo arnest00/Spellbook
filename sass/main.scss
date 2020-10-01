@@ -79,6 +79,7 @@ a {
 
 .form-group {
   display: block;
+  margin-bottom: 0.334rem;
 }
 
 #navbar {
@@ -119,7 +120,7 @@ a {
   }
 }
 
-#spells {
+#spells-main {
   width: 90%;
   margin: 0 auto;
 
@@ -128,13 +129,13 @@ a {
   }
 }
 
-#custom-spell {
+#form-main {
   h1 {
     text-align: center;
   }
 }
 
-#custom-spell-form-container {
+#spell-form-container {
   width: 30%;
   margin: 0 auto;
 }

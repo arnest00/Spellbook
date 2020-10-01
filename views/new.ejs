@@ -1,8 +1,8 @@
 <%- include('./partials/header') %>
 
-  <div id="custom-spell">
+  <div id="form-main">
     <h1>Add Custom Spell</h1>
-    <div id="custom-spell-form-container">
+    <div id="spell-form-container">
       <form action="/spells" method="POST">
 
         <div class="form-group">
@@ -60,7 +60,7 @@
 
         <div class="form-group">
           <label for="spell-duration">Duration:</label>
-          <input id="concentration" type="checkbox" name="concentration"><label for="concentration">Concentration</label>
+          <input id="concentration" type="checkbox" name="concentration" value="off"><label for="concentration">Concentration</label>
           <input id="spell-duration" type="text" name="duration">
         </div>
 

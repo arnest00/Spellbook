@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 
-  <div id="spells">
+  <div id="spells-main">
     <h1>My Spells</h1>
 
     <% for (let level = 0; level <= 9; level++) { %>
@@ -51,7 +51,7 @@
                 %></p>
 
                 <p><strong>Duration:</strong> <%=
-                  customSpells[spell].concentration ?
+                  customSpells[spell].concentration === 'on' ?
                     `Concentration, ${customSpells[spell].duration}` :
                     `${customSpells[spell].duration}`
                 %></p>

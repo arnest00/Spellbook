@@ -1,8 +1,8 @@
 <%- include('./partials/header') %>
 
-  <div id="custom-spell">
+  <div id="form-main">
     <h1>Edit <%= spell.name %></h1>
-    <div id="custom-spell-form-container">
+    <div id="spell-form-container">
       <form action="/spells/<%= spell._id %>?_method=PUT" method="POST">
 
         <div class="form-group">
@@ -13,30 +13,66 @@
         <div class="form-group">
           <label for="spell-schools">School:</label>
           <select id="spell-schools" name="school">
-            <option value="abjuration">Abjuration</option>
-            <option value="conjuration">Conjuration</option>
-            <option value="divination">Divination</option>
-            <option value="enchantment">Enchantment</option>
-            <option value="evocation">Evocation</option>
-            <option value="illusion">Illusion</option>
-            <option value="necromancy">Necromancy</option>
-            <option value="transmutation">Transmutation</option>
+            <option
+              <%= spell.school === 'abjuration' ? 'selected' : '' %>
+              value="abjuration">Abjuration</option>
+            <option
+              <%= spell.school === 'conjuration' ? 'selected' : '' %>
+              value="abjuration">Conjuration</option>
+            <option 
+              <%= spell.school === 'divination' ? 'selected' : '' %>
+              value="divination">Divination</option>
+            <option
+              <%= spell.school === 'enchantment' ? 'selected' : '' %>
+              value="enchantment">Enchantment</option>
+            <option
+              <%= spell.school === 'evocation' ? 'selected' : '' %>
+              value="evocation">Evocation</option>
+            <option
+              <%= spell.school === 'illusion' ? 'selected' : '' %>
+              value="illusion">Illusion</option>
+            <option
+              <%= spell.school === 'necromancy' ? 'selected' : '' %>
+              value="necromancy">Necromancy</option>
+            <option
+            
+              value="transmutation">Transmutation</option>
           </select>
         </div>
 
         <div class="form-group">
           <label for="spell-levels">Level:</label>
           <select id="spell-levels" name="level">
-            <option value="0th">Cantrip</option>
-            <option value="1st">1</option>
-            <option value="2nd">2</option>
-            <option value="3rd">3</option>
-            <option value="4th">4</option>
-            <option value="5th">5</option>
-            <option value="6th">6</option>
-            <option value="7th">7</option>
-            <option value="8th">8</option>
-            <option value="9th">9</option>
+            <option
+              <%= spell.level === '0th' ? 'selected' : '' %>
+              value="0th">Cantrip</option>
+            <option
+              <%= spell.level === '1st' ? 'selected' : '' %>
+              value="1st">1</option>
+            <option
+              <%= spell.level === '2nd' ? 'selected' : '' %>
+              value="2nd">2</option>
+            <option
+              <%= spell.level === '3rd' ? 'selected' : '' %>
+              value="3rd">3</option>
+            <option
+              <%= spell.level === '4th' ? 'selected' : '' %>
+              value="4th">4</option>
+            <option
+              <%= spell.level === '5th' ? 'selected' : '' %>
+              value="5th">5</option>
+            <option
+              <%= spell.level === '6th' ? 'selected' : '' %>
+              value="6th">6</option>
+            <option
+              <%= spell.level === '7th' ? 'selected' : '' %>
+              value="7th">7</option>
+            <option
+              <%= spell.level === '8th' ? 'selected' : '' %>
+              value="8th">8</option>
+            <option
+              <%= spell.level === '9th' ? 'selected' : '' %>
+              value="9th">9</option>
           </select>
         </div>
 
@@ -52,15 +88,43 @@
 
         <div class="div form-group">
           <span id="spell-components">Components:</span>
-          <input id="verbal" type="checkbox" name="components[]" value="v"><label for="verbal">V</label>
-          <input id="somatic" type="checkbox" name="components[]" value="s"><label for="somatic">S</label>
-          <input id="material" type="checkbox" name="components[]" value="m"><label for="material">M</label>
-          <input id="spell-material" type="text" value="<%= spell.material %>" name="material">
+          <input
+            id="verbal"
+            type="checkbox"
+            name="components[]"
+            <%= spell.components.indexOf('v') === -1 ? '' : 'checked' %>
+            value="v"><label for="verbal">V</label>
+          <input
+            id="somatic"
+            type="checkbox"
+            name="components[]"
+            <%= spell.components.indexOf('s') === -1 ? '' : 'checked' %>
+            value="s"><label for="somatic">S</label>
+          <input
+            id="material"
+            type="checkbox"
+            name="components[]"
+            <%= spell.components.indexOf('m') === -1 ? '' : 'checked' %>
+            value="m"><label for="material">M</label>
+          <input
+            <%- spell.material ?
+              `value="${ spell.material }"` :
+              `placeholder="powdered rhubarb leaf and an adder's stomach"`
+            %>
+            id="spell-material"
+            type="text"
+            name="material"
+          >
         </div>
 
         <div class="form-group">
           <label for="spell-duration">Duration:</label>
-          <input id="concentration" type="checkbox" value="<%= spell.concentration %>" name="concentration"><label for="concentration">Concentration</label>
+          <input
+            id="concentration"
+            type="checkbox"
+            name="concentration"
+            <%= spell.concentration === 'on' ? 'checked' : '' %>
+          ><label for="concentration">Concentration</label>
           <input id="spell-duration" type="text" value="<%= spell.duration %>" name="duration">
         </div>
 
