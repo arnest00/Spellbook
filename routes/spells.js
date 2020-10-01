@@ -1,11 +1,11 @@
+require('dotenv').config();
+
 const MongoClient = require('mongodb').MongoClient,
+      { ObjectId } = require('mongodb'),
       express = require('express'),
       router = express.Router();
 
-const { mongoURI } = require('../config.json'),
-      { ObjectId } = require('mongodb');
-
-MongoClient.connect(mongoURI, { useUnifiedTopology: true })
+MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
 .then(client => {
   console.log('Connected to database!');
 
