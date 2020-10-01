@@ -66,7 +66,10 @@
               </div>
 
               <div class="spell-card-actions-container">
-                <a class="button" href="/spells/<%= customSpells[spell]._id %>/edit">Edit</a>
+                <a class="button button-more" href="/spells/<%= customSpells[spell]._id %>/edit">Edit</a>
+                <form class="delete-form" action="/spells/<%= customSpells[spell]._id %>?_method=DELETE" method="post">
+                  <input class="button button-danger" type="submit" value="Delete">
+                </form>
               </div>
             </div>
           <% } %>
@@ -75,14 +78,6 @@
 
     <% } %>
   </div>
-
-  <div>
-    <h2>Delete Spell</h2>
-    <p>Remove the first <em>magic missile</em> spell. Does nothing if there are no more <em>magic missile</em> spells.</p>
-    <button id="delete-button">Delete</button>
-  </div>
-
-  <div id="message"></div>
 
   <script src="/js/main.js"></script>
   <%- include('./partials/footer') %>

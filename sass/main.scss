@@ -30,21 +30,6 @@ a {
   text-decoration: none;
 }
 
-a.button {
-  display: inline-block;
-  padding: 0.34rem 1rem;
-  border: 0.167rem solid $palette-tertiary;
-  border-radius: 0.167rem;
-  color: $palette-tertiary;
-  text-align: center;
-  transition: all 200ms;
-}
-
-a.button:hover {
-  background-color: $palette-tertiary;
-  color: $palette-light;
-}
-
 .spells-container {
   display: flex;
   flex-wrap: wrap;
@@ -54,6 +39,42 @@ a.button:hover {
   h3 {
     color: $palette-primary;
   }
+}
+
+.button {
+  display: inline-block;
+  padding: 0.34rem 1rem;
+  background-color: transparent;
+  border-radius: 0.167rem;
+  text-align: center;
+  transition: all 200ms;
+}
+
+.button:hover {
+  color: $palette-light;
+}
+
+.button-more {
+  border: 0.167rem solid $palette-tertiary;
+  color: $palette-tertiary;
+}
+
+.button-more:hover {
+  background-color: $palette-tertiary;
+}
+
+.button-danger {
+  border: 0.167rem solid $palette-primary;
+  color: $palette-primary;
+}
+
+.button-danger:hover {
+  cursor: pointer;
+  background-color: $palette-primary;
+}
+
+.delete-form {
+  display: inline-block;
 }
 
 .form-group {

@@ -22,21 +22,6 @@ a {
   text-decoration: none;
 }
 
-a.button {
-  display: inline-block;
-  padding: 0.34rem 1rem;
-  border: 0.167rem solid #284b63;
-  border-radius: 0.167rem;
-  color: #284b63;
-  text-align: center;
-  transition: all 200ms;
-}
-
-a.button:hover {
-  background-color: #284b63;
-  color: #f7f1de;
-}
-
 .spells-container {
   display: flex;
   flex-wrap: wrap;
@@ -44,6 +29,42 @@ a.button:hover {
 
 .spell-card h3 {
   color: #a14e2f;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.34rem 1rem;
+  background-color: transparent;
+  border-radius: 0.167rem;
+  text-align: center;
+  transition: all 200ms;
+}
+
+.button:hover {
+  color: #f7f1de;
+}
+
+.button-more {
+  border: 0.167rem solid #284b63;
+  color: #284b63;
+}
+
+.button-more:hover {
+  background-color: #284b63;
+}
+
+.button-danger {
+  border: 0.167rem solid #a14e2f;
+  color: #a14e2f;
+}
+
+.button-danger:hover {
+  cursor: pointer;
+  background-color: #a14e2f;
+}
+
+.delete-form {
+  display: inline-block;
 }
 
 .form-group {

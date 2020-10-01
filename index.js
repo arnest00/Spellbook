@@ -7,7 +7,7 @@ const { ObjectId } = require('mongodb');
 
 const app = express();
 
-app.set('view engine', 'ejs'); // insert before any app.use, app.get, app.post methods
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -80,7 +80,17 @@ MongoClient.connect(mongoURI, { useUnifiedTopology: true })
         .catch(error => console.error(error));
     });
 
-    // ====== DELETE
+    // ====== DESTROY
+    app.delete('/spells/:id', (req, res) => {
+      customSpellCollection.findOneAndDelete(
+        { '_id': ObjectId(req.params.id) }
+      )
+        .then(result => {
+          res.redirect('/');
+        })
+        .catch(error => console.error(error));
+    });
+
     app.delete('/spells', (req, res) => {
       customSpellCollection.deleteOne(
         { name: req.body.name }
