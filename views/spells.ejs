@@ -26,50 +26,56 @@
           <% if (Number(customSpells[spell].level.charAt(0)) === level) { %>
             <div class="spell-card">
               <div class="spell-card-content-container">
-                <h3><%= customSpells[spell].name %></h3>
+                <div class="spell-card-name-container">
+                  <h3><%= customSpells[spell].name %></h3>
+                  <span class="spell-card-hidden" href="#">&#x25BC;</span>
+                </div>
 
-                <p><em><%=
-                  customSpells[spell].level === '0th' ?
-                    `${customSpells[spell].school} cantrip` :
-                    `${customSpells[spell].level}-level ${customSpells[spell].school}`
-                %></em></p>
-
-                <p><strong>Casting Time:</strong> <%=
-                  customSpells[spell].time
-                %></p>
-
-                <p><strong>Range:</strong> <%=
-                  customSpells[spell].range
-                %></p>
-
-                <p><strong>Components:</strong> <%=
-                  customSpells[spell].components.join(', ').toUpperCase()
-                %> <%=
-                  customSpells[spell].material ?
-                    `(${customSpells[spell].material})` :
-                    ''
-                %></p>
-
-                <p><strong>Duration:</strong> <%=
-                  customSpells[spell].concentration === 'on' ?
-                    `Concentration, ${customSpells[spell].duration}` :
-                    `${customSpells[spell].duration}`
-                %></p>
-
-                <p><%= customSpells[spell].desc %></p>
-
-                <% if (customSpells[spell].higherLevel) { %>
-                  <p><strong>At Higher Levels.</strong> <%=
-                    customSpells[spell].higherLevel
+                <div class="spell-card-info-container hidden">
+                  <p><em><%=
+                    customSpells[spell].level === '0th' ?
+                      `${customSpells[spell].school} cantrip` :
+                      `${customSpells[spell].level}-level ${customSpells[spell].school}`
+                  %></em></p>
+  
+                  <p><strong>Casting Time:</strong> <%=
+                    customSpells[spell].time
                   %></p>
-                <% } %>
-              </div>
+  
+                  <p><strong>Range:</strong> <%=
+                    customSpells[spell].range
+                  %></p>
+  
+                  <p><strong>Components:</strong> <%=
+                    customSpells[spell].components.join(', ').toUpperCase()
+                  %> <%=
+                    customSpells[spell].material ?
+                      `(${customSpells[spell].material})` :
+                      ''
+                  %></p>
+  
+                  <p><strong>Duration:</strong> <%=
+                    customSpells[spell].concentration === 'on' ?
+                      `Concentration, ${customSpells[spell].duration}` :
+                      `${customSpells[spell].duration}`
+                  %></p>
+  
+                  <p><%= customSpells[spell].desc %></p>
+  
+                  <% if (customSpells[spell].higherLevel) { %>
+                    <p><strong>At Higher Levels.</strong> <%=
+                      customSpells[spell].higherLevel
+                    %></p>
+                  <% } %>
 
-              <div class="spell-card-actions-container">
-                <a class="button button-more" href="/spells/<%= customSpells[spell]._id %>/edit">Edit</a>
-                <form class="delete-form" action="/spells/<%= customSpells[spell]._id %>?_method=DELETE" method="post">
-                  <input class="button button-danger" type="submit" value="Delete">
-                </form>
+                  <div class="spell-card-actions-container">
+                    <a class="button button-more" href="/spells/<%= customSpells[spell]._id %>/edit">Edit</a>
+                    <form class="delete-form" action="/spells/<%= customSpells[spell]._id %>?_method=DELETE" method="post">
+                      <input class="button button-danger" type="submit" value="Delete">
+                    </form>
+                  </div>
+                </div>
+
               </div>
             </div>
           <% } %>

@@ -30,15 +30,47 @@ a {
   text-decoration: none;
 }
 
+.hidden {
+  display: none;
+}
+
 .spells-container {
   display: flex;
   flex-wrap: wrap;
 }
 
 .spell-card {
-  h3 {
-    color: $palette-primary;
+  flex-basis: calc(25% - 1rem);
+  margin: 0.34rem 0.5rem;
+  overflow: hidden;
+}
+
+.spell-card-name-container {
+  cursor: pointer;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: $palette-primary;
+  color: $palette-light;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.spell-card-info-container {
+  border-left: 0.125rem solid $palette-dark;
+  border-right: 0.125rem solid $palette-dark;
+  border-bottom: 0.125rem solid $palette-dark;
+  padding: 0.5rem;
+
+  p {
+    margin: 0.34rem 0;
   }
+}
+
+.spell-card-actions-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 0 0.5rem 0;
 }
 
 .button {
