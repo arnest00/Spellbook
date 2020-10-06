@@ -6,12 +6,12 @@
       <form action="/spells" method="POST">
 
         <div class="form-group">
-          <label for="spell-name">Name:</label>
+          <label class="form-group-label" for="spell-name">Name:</label>
           <input id="spell-name" type="text" name="name">
         </div>
 
         <div class="form-group">
-          <label for="spell-schools">School:</label>
+          <label class="form-group-label" for="spell-schools">School:</label>
           <select id="spell-schools" name="school">
             <option value="abjuration">Abjuration</option>
             <option value="conjuration">Conjuration</option>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-          <label for="spell-levels">Level:</label>
+          <label class="form-group-label" for="spell-levels">Level:</label>
           <select id="spell-levels" name="level">
             <option value="0th">Cantrip</option>
             <option value="1st">1</option>
@@ -41,17 +41,17 @@
         </div>
 
         <div class="form-group">
-          <label for="spell-time">Casting Time:</label>
+          <label class="form-group-label" for="spell-time">Casting Time:</label>
           <input id="spell-time" type="text" name="time">
         </div>
 
         <div class="form-group">
-          <label for="spell-range">Range:</label>
+          <label class="form-group-label" for="spell-range">Range:</label>
           <input id="spell-range" type="text" name="range">
         </div>
 
-        <div class="div form-group">
-          <span id="spell-components">Components:</span>
+        <div class="form-group">
+          <span id="spell-components" class="form-group-label">Components:</span>
           <input id="verbal" type="checkbox" name="components[]" value="v"><label for="verbal">V</label>
           <input id="somatic" type="checkbox" name="components[]" value="s"><label for="somatic">S</label>
           <input id="material" type="checkbox" name="components[]" value="m"><label for="material">M</label>
@@ -59,23 +59,23 @@
         </div>
 
         <div class="form-group">
-          <label for="spell-duration">Duration:</label>
+          <label class="form-group-label" for="spell-duration">Duration:</label>
           <input id="concentration" type="checkbox" name="concentration" value="off"><label for="concentration">Concentration</label>
           <input id="spell-duration" type="text" name="duration">
         </div>
 
-        <div class="form-group">
+        <div class="form-group-textarea">
           <label for="spell-desc">Description:</label>
           <textarea id="spell-desc" cols="30" rows="10" name="desc"></textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group-textarea">
           <label for="spell-higher-level">At Higher Level:</label>
           <textarea id="spell-desc" cols="30" rows="5" name="higherLevel"></textarea>
         </div>
 
         <div class="form-group">
-          <button type="submit">Submit</button>
+          <button class="button button-confirm" type="submit">Submit</button>
         </div>
       </form>
     </div>

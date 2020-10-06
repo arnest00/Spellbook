@@ -15,7 +15,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  margin: 0.34em 0;
+  margin: 0.34rem 0;
+  padding-bottom: 0.34rem;
 }
 
 a {
@@ -72,8 +73,14 @@ a {
   text-align: center;
   transition: all 200ms;
 }
-
 .button:hover {
+  color: #f7f1de;
+}
+
+.button-confirm {
+  border: none;
+  border: 0.167rem solid #3f612d;
+  background-color: #3f612d;
   color: #f7f1de;
 }
 
@@ -81,7 +88,6 @@ a {
   border: 0.167rem solid #284b63;
   color: #284b63;
 }
-
 .button-more:hover {
   background-color: #284b63;
 }
@@ -90,7 +96,6 @@ a {
   border: 0.167rem solid #a14e2f;
   color: #a14e2f;
 }
-
 .button-danger:hover {
   cursor: pointer;
   background-color: #a14e2f;
@@ -101,8 +106,28 @@ a {
 }
 
 .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.34rem;
+}
+.form-group input {
+  flex: 1;
+  padding: 0.125rem 0.06rem;
+}
+.form-group .form-group-label {
+  margin-right: 0.17rem;
+}
+.form-group .button-confirm {
+  flex: 1;
+}
+
+.form-group-textarea {
   display: block;
   margin-bottom: 0.334rem;
+}
+.form-group-textarea textarea {
+  width: 100%;
+  padding: 0.25rem;
 }
 
 #navbar {
@@ -146,6 +171,9 @@ a {
 }
 #spells-main h1 {
   text-align: center;
+}
+#spells-main h2 {
+  border-bottom: 1px solid #272127;
 }
 
 #form-main h1 {

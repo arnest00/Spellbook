@@ -23,7 +23,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  margin: 0.34em 0;
+  margin: 0.34rem 0;
+  padding-bottom: 0.34rem; 
 }
 
 a {
@@ -80,29 +81,36 @@ a {
   border-radius: 0.167rem;
   text-align: center;
   transition: all 200ms;
+
+  &:hover {
+    color: $palette-light;
+  }
 }
 
-.button:hover {
+.button-confirm {
+  border: none;
+  border: 0.167rem solid $palette-secondary;
+  background-color: $palette-secondary;
   color: $palette-light;
 }
 
 .button-more {
   border: 0.167rem solid $palette-tertiary;
   color: $palette-tertiary;
-}
 
-.button-more:hover {
-  background-color: $palette-tertiary;
+  &:hover {
+    background-color: $palette-tertiary;
+  }
 }
 
 .button-danger {
   border: 0.167rem solid $palette-primary;
   color: $palette-primary;
-}
 
-.button-danger:hover {
-  cursor: pointer;
-  background-color: $palette-primary;
+  &:hover {
+    cursor: pointer;
+    background-color: $palette-primary;
+  }
 }
 
 .delete-form {
@@ -110,8 +118,32 @@ a {
 }
 
 .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.34rem;
+
+  input {
+    flex: 1;
+    padding: 0.125rem 0.06rem;
+  }
+
+  .form-group-label {
+    margin-right: 0.17rem;
+  }
+
+  .button-confirm {
+    flex: 1;
+  }
+}
+
+.form-group-textarea {
   display: block;
   margin-bottom: 0.334rem;
+
+  textarea {
+    width: 100%;
+    padding: 0.25rem;
+  }
 }
 
 #navbar {
@@ -158,6 +190,10 @@ a {
 
   h1 {
     text-align: center;
+  }
+
+  h2 {
+    border-bottom: 1px solid $palette-dark;
   }
 }
 

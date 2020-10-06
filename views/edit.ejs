@@ -6,12 +6,12 @@
       <form action="/spells/<%= spell._id %>?_method=PUT" method="POST">
 
         <div class="form-group">
-          <label for="spell-name">Name:</label>
+          <label class="form-group-label" for="spell-name">Name:</label>
           <input id="spell-name" type="text" value="<%= spell.name %>" name="name">
         </div>
 
         <div class="form-group">
-          <label for="spell-schools">School:</label>
+          <label class="form-group-label" for="spell-schools">School:</label>
           <select id="spell-schools" name="school">
             <option
               <%= spell.school === 'abjuration' ? 'selected' : '' %>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="form-group">
-          <label for="spell-levels">Level:</label>
+          <label class="form-group-label" for="spell-levels">Level:</label>
           <select id="spell-levels" name="level">
             <option
               <%= spell.level === '0th' ? 'selected' : '' %>
@@ -77,17 +77,17 @@
         </div>
 
         <div class="form-group">
-          <label for="spell-time">Casting Time:</label>
+          <label class="form-group-label" for="spell-time">Casting Time:</label>
           <input id="spell-time" type="text" value="<%= spell.time %>" name="time">
         </div>
 
         <div class="form-group">
-          <label for="spell-range">Range:</label>
+          <label class="form-group-label" for="spell-range">Range:</label>
           <input id="spell-range" type="text" value="<%= spell.range %>" name="range">
         </div>
 
-        <div class="div form-group">
-          <span id="spell-components">Components:</span>
+        <div class="form-group">
+          <span class="form-group-label" id="spell-components">Components:</span>
           <input
             id="verbal"
             type="checkbox"
@@ -118,7 +118,7 @@
         </div>
 
         <div class="form-group">
-          <label for="spell-duration">Duration:</label>
+          <label class="form-group-label" for="spell-duration">Duration:</label>
           <input
             id="concentration"
             type="checkbox"
@@ -128,18 +128,18 @@
           <input id="spell-duration" type="text" value="<%= spell.duration %>" name="duration">
         </div>
 
-        <div class="form-group">
+        <div class="form-group-textarea">
           <label for="spell-desc">Description:</label>
           <textarea id="spell-desc" cols="30" rows="10" name="desc"><%= spell.desc %></textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group-textarea">
           <label for="spell-higher-level">At Higher Level:</label>
           <textarea id="spell-desc" cols="30" rows="5" name="higherLevel"><%= spell.higherLevel %></textarea>
         </div>
 
         <div class="form-group">
-          <button type="submit">Submit</button>
+          <button class="button button-confirm" type="submit">Submit</button>
         </div>
       </form>
     </div>
