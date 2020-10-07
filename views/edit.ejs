@@ -7,12 +7,12 @@
 
         <div class="form-group">
           <label class="form-group-label" for="spell-name">Name:</label>
-          <input id="spell-name" type="text" value="<%= spell.name %>" name="name">
+          <input id="spell-name" type="text" value="<%= spell.name %>" name="name" required>
         </div>
 
         <div class="form-group">
           <label class="form-group-label" for="spell-schools">School:</label>
-          <select id="spell-schools" name="school">
+          <select id="spell-schools" name="school" required>
             <option
               <%= spell.school === 'abjuration' ? 'selected' : '' %>
               value="abjuration">Abjuration</option>
@@ -42,7 +42,7 @@
 
         <div class="form-group">
           <label class="form-group-label" for="spell-levels">Level:</label>
-          <select id="spell-levels" name="level">
+          <select id="spell-levels" name="level" required>
             <option
               <%= spell.level === '0th' ? 'selected' : '' %>
               value="0th">Cantrip</option>
@@ -78,17 +78,18 @@
 
         <div class="form-group">
           <label class="form-group-label" for="spell-time">Casting Time:</label>
-          <input id="spell-time" type="text" value="<%= spell.time %>" name="time">
+          <input id="spell-time" type="text" value="<%= spell.time %>" name="time" required>
         </div>
 
         <div class="form-group">
           <label class="form-group-label" for="spell-range">Range:</label>
-          <input id="spell-range" type="text" value="<%= spell.range %>" name="range">
+          <input id="spell-range" type="text" value="<%= spell.range %>" name="range" required>
         </div>
 
         <div class="form-group">
           <span class="form-group-label" id="spell-components">Components:</span>
-          <input
+          <div class="checkbox-group" id="required">
+            <input
             id="verbal"
             type="checkbox"
             name="components[]"
@@ -106,6 +107,7 @@
             name="components[]"
             <%= spell.components.indexOf('m') === -1 ? '' : 'checked' %>
             value="m"><label for="material">M</label>
+          </div>
           <input
             <%- spell.material ?
               `value="${ spell.material }"` :
@@ -119,18 +121,20 @@
 
         <div class="form-group">
           <label class="form-group-label" for="spell-duration">Duration:</label>
-          <input
+          <div class="checkbox-group">
+            <input
             id="concentration"
             type="checkbox"
             name="concentration"
             <%= spell.concentration === 'on' ? 'checked' : '' %>
           ><label for="concentration">Concentration</label>
-          <input id="spell-duration" type="text" value="<%= spell.duration %>" name="duration">
+          </div>
+          <input id="spell-duration" type="text" value="<%= spell.duration %>" name="duration" required>
         </div>
 
         <div class="form-group-textarea">
           <label for="spell-desc">Description:</label>
-          <textarea id="spell-desc" cols="30" rows="10" name="desc"><%= spell.desc %></textarea>
+          <textarea id="spell-desc" cols="30" rows="10" name="desc" required><%= spell.desc %></textarea>
         </div>
 
         <div class="form-group-textarea">
@@ -139,7 +143,7 @@
         </div>
 
         <div class="form-group">
-          <button class="button button-confirm" type="submit">Submit</button>
+          <button class="button button-confirm" id="submit-button" type="submit">Submit</button>
         </div>
       </form>
     </div>
