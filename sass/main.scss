@@ -123,7 +123,7 @@ a {
   margin-bottom: 0.34rem;
 
   input {
-    flex: 1;
+    flex: 1 1;
     padding: 0.125rem 0.06rem;
   }
 
@@ -136,9 +136,13 @@ a {
   }
 }
 
+.checkbox-group {
+  margin-right: 0.17rem;
+}
+
 .form-group-textarea {
   display: block;
-  margin-bottom: 0.334rem;
+  margin-bottom: 0.34rem;
 
   textarea {
     width: 100%;

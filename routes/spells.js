@@ -56,6 +56,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
           school: req.body.school,
           level: req.body.level,
           time: req.body.time,
+          concentration: req.body.concentration,
           range: req.body.range,
           components: req.body.components,
           material: req.body.material,
