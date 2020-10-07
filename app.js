@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const express = require('express'),
       bodyParser = require('body-parser'),
-      methodOverride = require('method-override');
+      methodOverride = require('method-override'),
+      passport = require('passport');
 
 const indexRoutes = require('./routes/index');
 const spellRoutes = require('./routes/spells');
@@ -16,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
+
+app.use(passport.initialize());
 
 app.use('/', indexRoutes)
 app.use('/spells', spellRoutes);
