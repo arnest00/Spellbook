@@ -16,7 +16,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   router.get('/', (req, res) => {
     customSpellCollection.find().toArray()
       .then(results => {
-        res.render('spells.ejs', { customSpells: results });
+        res.render('./spells/spells.ejs', { customSpells: results });
       })
       .catch(error => console.error(error));
   });
@@ -32,7 +32,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
 
   // ====== NEW
   router.get('/new', (req, res) => {
-    res.render('new.ejs');
+    res.render('./spells/new.ejs');
   });
 
   // ====== EDIT
@@ -41,7 +41,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
         '_id': ObjectId(req.params.id)
     })
       .then(results => {
-        res.render('edit.ejs', { spell: results } );
+        res.render('./spells/edit.ejs', { spell: results } );
     })
     .catch(error => console.error(error));
   });

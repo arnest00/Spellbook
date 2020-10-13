@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "style": "sass --watch ./sass:public/css"
+    "style": "sass --watch ./sass:public/css",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
