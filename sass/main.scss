@@ -35,6 +35,12 @@ a {
   display: none;
 }
 
+.user-card {
+  width: 33%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .spells-container {
   display: flex;
   flex-wrap: wrap;
@@ -83,6 +89,7 @@ a {
   transition: all 200ms;
 
   &:hover {
+    cursor: pointer;
     color: $palette-light;
   }
 }
