@@ -1,7 +1,7 @@
 <%- include('../partials/header') %>
 
   <div class="user-card">
-    <h1>Log In</h1>
+    <h1>Register</h1>
     
     <form action="/users/register" method="POST">
       <div class="form-group">
@@ -28,6 +28,8 @@
         <button class="button button-confirm" id="submit-button" type="submit">Register</button>
       </div>
     </form>
+
+    <p>Already have an account? <a href="/users/login">Log In</a></p>
   </div>
 
 <%- include('../partials/footer') %>

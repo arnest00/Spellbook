@@ -1,1 +1,1 @@
-A work-in-progress spellbook app for D&D 5e.
+A work-in-progress spellbook app for 5e.

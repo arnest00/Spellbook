@@ -29,8 +29,29 @@ a {
 
 .user-card {
   width: 33%;
+  height: 66vh;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.user-card .user-card-buttons-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+.user-card .user-card-buttons-container a {
+  margin: 0.5rem 0;
+}
+.user-card p {
+  margin: 0.5rem 0;
+}
+.user-card p a:hover {
+  text-decoration: underline;
+}
+.user-card .form-group:last-child {
+  margin: 1rem 0;
 }
 
 .spells-container {
@@ -182,9 +203,6 @@ a {
 }
 #spells-main h1 {
   text-align: center;
-}
-#spells-main h2 {
-  border-bottom: 1px solid #272127;
 }
 
 #form-main h1 {

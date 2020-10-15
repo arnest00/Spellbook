@@ -37,8 +37,34 @@ a {
 
 .user-card {
   width: 33%;
+  height: 66vh;
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .user-card-buttons-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  .user-card-buttons-container a {
+    margin: 0.5rem 0;
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
+
+  p a:hover {
+    text-decoration: underline;
+  }
+
+  .form-group:last-child {
+    margin: 1rem 0;
+  }
 }
 
 .spells-container {
@@ -201,10 +227,6 @@ a {
 
   h1 {
     text-align: center;
-  }
-
-  h2 {
-    border-bottom: 1px solid $palette-dark;
   }
 }
 
