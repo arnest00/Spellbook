@@ -2,26 +2,49 @@
 
   <div class="user-card">
     <h1>Register</h1>
+    <%- include('../partials/messages') %>
     
     <form action="/users/register" method="POST">
       <div class="form-group">
         <label class="form-group-label" for="name">Name:</label>
-        <input id="name" type="name" name="name" placeholder="Your username">
+        <input
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Your username"
+          value="<%= typeof name != 'undefined' ? name : '' %>"
+        />
       </div>
 
       <div class="form-group">
         <label class="form-group-label" for="email">E-mail:</label>
-        <input id="email" type="email" name="email" placeholder="Your e-mail address">
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Your e-mail address"
+          value="<%= typeof email != 'undefined' ? email : '' %>"
+        />
       </div>
 
       <div class="form-group">
         <label class="form-group-label" for="password">Password:</label>
-        <input id="password" type="password" name="password" placeholder="Create password">
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Create password"
+        />
       </div>
 
       <div class="form-group">
         <label class="form-group-label" for="password2">Confirm Password:</label>
-        <input id="password2" type="password" name="password2" placeholder="Confirm password">
+        <input
+          id="password2"
+          type="password"
+          name="password2"
+          placeholder="Confirm password"
+        />
       </div>
 
       <div class="form-group">

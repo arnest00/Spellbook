@@ -27,6 +27,13 @@ a {
   display: none;
 }
 
+.error-message {
+  color: #a14e2f;
+  font-weight: 700;
+  margin: 0.25rem 0;
+  text-align: left;
+}
+
 .user-card {
   width: 33%;
   height: 66vh;
