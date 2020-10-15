@@ -3,7 +3,8 @@ require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient,
       { ObjectId } = require('mongodb'),
       express = require('express'),
-      router = express.Router();
+      router = express.Router(),
+      { ensureAuthenticated } = require('../auth');
 
 MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
 .then(client => {
@@ -13,7 +14,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   const customSpellCollection = db.collection('custom-spells');
   
   // ====== INDEX
-  router.get('/', (req, res) => {
+  router.get('/', ensureAuthenticated, (req, res) => {
     customSpellCollection.find().toArray()
       .then(results => {
         res.render('./spells/spells.ejs', { customSpells: results });
@@ -22,7 +23,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   });
 
   // ====== CREATE
-  router.post('/', (req, res) => {
+  router.post('/', ensureAuthenticated, (req, res) => {
     customSpellCollection.insertOne(req.body)
       .then(result => {
         res.redirect('/spells');
@@ -31,12 +32,12 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   });
 
   // ====== NEW
-  router.get('/new', (req, res) => {
+  router.get('/new', ensureAuthenticated, (req, res) => {
     res.render('./spells/new.ejs');
   });
 
   // ====== EDIT
-  router.get("/:id/edit", (req, res) => {
+  router.get("/:id/edit", ensureAuthenticated, (req, res) => {
     customSpellCollection.findOne({
         '_id': ObjectId(req.params.id)
     })
@@ -47,7 +48,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   });
 
   // ====== UPDATE
-  router.put('/:id', (req, res) => {
+  router.put('/:id', ensureAuthenticated, (req, res) => {
     customSpellCollection.findOneAndUpdate(
       { '_id': ObjectId(req.params.id) },
       {
@@ -73,7 +74,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   });
 
   // ====== DESTROY
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', ensureAuthenticated, (req, res) => {
     customSpellCollection.findOneAndDelete(
       { '_id': ObjectId(req.params.id) }
     )

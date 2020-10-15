@@ -42,6 +42,13 @@ a {
   text-align: left;
 }
 
+.success-message {
+  color: $palette-secondary;
+  font-weight: 700;
+  margin: 0.25rem 0;
+  text-align: left;
+}
+
 .user-card {
   width: 33%;
   height: 66vh;

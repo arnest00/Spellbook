@@ -1,8 +1,9 @@
 const express = require('express'),
-      router = express.Router();
+      router = express.Router(),
+      { forwardAuthenticated } = require('../auth');
 
 // ====== Landing page
-router.get('/', (req, res) => {
+router.get('/', forwardAuthenticated, (req, res) => {
   res.render('landing.ejs');
 });
 

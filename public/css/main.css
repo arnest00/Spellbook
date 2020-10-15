@@ -34,6 +34,13 @@ a {
   text-align: left;
 }
 
+.success-message {
+  color: #3f612d;
+  font-weight: 700;
+  margin: 0.25rem 0;
+  text-align: left;
+}
+
 .user-card {
   width: 33%;
   height: 66vh;

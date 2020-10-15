@@ -5,3 +5,21 @@
     </div>
   <% }); %>
 <% } %>
+
+<% if (success_msg != '') { %>
+  <div class="success-message">
+    <%= success_msg %>
+  </div>
+<% } %>
+
+<% if (error_msg != '') { %>
+  <div class="error-message">
+    <%= error_msg %>
+  </div>
+<% } %>
+
+<% if (error != '') { %>
+  <div class="error-message">
+    <%= error %>
+  </div>
+<% } %>

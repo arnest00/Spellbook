@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ComponentSchema = new mongoose.Schema({ name: String });
 
-const SpellSchema = new mongoose.Schema({
+const CustomSpellSchema = new mongoose.Schema({
   name: { 
     type: String,
     required: true
@@ -40,6 +40,6 @@ const SpellSchema = new mongoose.Schema({
   higherLevel: String
 });
 
-const Spell = mongoose.model('Spell', SpellSchema);
+const CustomSpell = mongoose.model('CustomSpell', SpellSchema);
 
-module.exports = Spell;
+module.exports = CustomSpell;
