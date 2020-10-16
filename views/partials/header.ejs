@@ -12,7 +12,12 @@
 
   <nav id="navbar">
     <div id="navbar-brand-container">
-      <a id="navbar-brand" href="/">My Spellbook</a>
+      <a
+        id="navbar-brand"
+        href="<% typeof user !== 'undefined' ? '/spells' : '/' %>"
+      >
+        My Spellbook
+      </a>
     </div>
     <div id="navbar-menu-container">
       <ul id="navbar-left">

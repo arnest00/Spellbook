@@ -25,7 +25,7 @@ mongoose.connect(db, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-  .then(() => console.log('Connected to database in app.js!'))
+  .then(() => console.log('Connected to database!'))
   .catch(error => console.log(error));
 
 // ====== EJS

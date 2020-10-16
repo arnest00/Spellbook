@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 
-const ComponentSchema = new mongoose.Schema({ name: String });
-
-const CustomSpellSchema = new mongoose.Schema({
+const SpellSchema = new mongoose.Schema({
   name: { 
     type: String,
     required: true
@@ -23,9 +21,8 @@ const CustomSpellSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  components: { 
-    type: [ComponentSchema],
-    default: undefined,
+  components: {
+    type: [String],
     required: true
   },
   concentration: String,
@@ -37,9 +34,16 @@ const CustomSpellSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  higherLevel: String
+  higherLevel: String,
+  author: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    },
+    name: String
+  }
 });
 
-const CustomSpell = mongoose.model('CustomSpell', SpellSchema);
+const Spell = mongoose.model('Spell', SpellSchema);
 
-module.exports = CustomSpell;
+module.exports = Spell;
