@@ -17,7 +17,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   router.get('/', ensureAuthenticated, (req, res) => {
     customSpellCollection.find().toArray()
       .then(results => {
-        res.render('./spells/spells.ejs', { customSpells: results });
+        res.render('./spells/spells.ejs', { customSpells: results, user: req.user });
       })
       .catch(error => console.error(error));
   });

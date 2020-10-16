@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/main.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC&display=swap" rel="stylesheet">
-  <title>Spellbook</title>
+  <title>My Spellbook</title>
 </head>
 <body>
 
@@ -16,13 +16,17 @@
     </div>
     <div id="navbar-menu-container">
       <ul id="navbar-left">
-        <li><a href="/spells">My Spells</a></li>
-        <li><a href="/spells">Search for a Spell</a></li>
-        <li><a href="/spells/new">Add Custom Spell</a></li>
+        <% if (typeof user !== 'undefined') { %>
+          <li><a href="/spells">My Spells</a></li>
+          <li><a href="/spells">Search for a Spell</a></li>
+          <li><a href="/spells/new">Add Custom Spell</a></li>
+        <% } %>
       </ul>
       <ul id="navbar-right">
-        <li><a href="/spells">Hello user!</a></li>
-        <li><a href="/users/logout">Log Out</a></li>
+        <% if (typeof user !== 'undefined') { %>
+          <li><a href="/spells">Hello <%= user.name %>!</a></li>
+          <li><a href="/users/logout">Log Out</a></li>
+        <% } %>
       </ul>
     </div>
   </nav>
