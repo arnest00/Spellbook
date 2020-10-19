@@ -32,11 +32,31 @@ router.get('/', ensureAuthenticated, (req, res) => {
 
 // ====== CREATE
 router.post('/', ensureAuthenticated, (req, res) => {
-  Spell.insertOne(req.body)
-    .then(result => {
-      res.redirect('/spells');
-    })
-    .catch(error => console.error(error));
+  const { name, school, level, time, range, components, material, concentration, duration, desc, higherLevel } = req.body;
+
+  const newSpell = {
+    name: name,
+    school: school,
+    level: level,
+    time: time,
+    range: range,
+    components: components,
+    material: material,
+    concentration: concentration,
+    duration: duration,
+    desc: desc,
+    higherLevel: higherLevel,
+    author: {
+      id: req.user.id,
+      name: req.user.name
+    }
+  };
+
+  Spell.create(newSpell, (err, createdSpell) => {
+    if (err) throw err;
+
+    res.redirect('/spells');
+  });
 });
 
 // ====== NEW
