@@ -115,11 +115,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
       concentration: concentration,
       duration: duration,
       desc: desc,
-      higherLevel: higherLevel,
-      author: {
-        id: req.user.id,
-        name: req.user.name
-      }
+      higherLevel: higherLevel
     };
   
     Spell.findByIdAndUpdate(req.params.id, updatedSpell, err => {
