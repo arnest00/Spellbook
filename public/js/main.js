@@ -1,7 +1,6 @@
 const spellCardNameContainers = document.querySelectorAll('.spell-card-name-container');
 const spellCardArrows = document.querySelectorAll('.spell-card-name-container span');
 const spellCardInfoContainers = document.querySelectorAll('.spell-card-info-container');
-const formSubmitButton = document.querySelector('#submit-button');
 
 for (let i = 0; i < spellCardNameContainers.length; i++) {
   spellCardNameContainers[i].addEventListener('click', e => {
@@ -16,13 +15,3 @@ for (let i = 0; i < spellCardNameContainers.length; i++) {
     spellCardInfoContainers[i].classList.toggle('hidden');
   });
 };
-
-formSubmitButton.addEventListener('click', e => {
-  const checkedBoxes = document.querySelectorAll('#required input:checked');
-
-  if (!checkedBoxes.length) {
-    e.preventDefault();
-
-    alert('You must check at least one spell component.');
-  };
-});

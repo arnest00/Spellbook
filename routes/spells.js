@@ -33,35 +33,53 @@ router.get('/', ensureAuthenticated, (req, res) => {
 // ====== CREATE
 router.post('/', ensureAuthenticated, (req, res) => {
   const { name, school, level, time, range, components, material, concentration, duration, desc, higherLevel } = req.body;
+  let errors = [];
 
-  const newSpell = {
-    name: name,
-    school: school,
-    level: level,
-    time: time,
-    range: range,
-    components: components,
-    material: material,
-    concentration: concentration,
-    duration: duration,
-    desc: desc,
-    higherLevel: higherLevel,
-    author: {
-      id: req.user.id,
-      name: req.user.name
-    }
+  // Check required fields
+  if (!name || !school || !level || !time || !range || !duration || !desc) {
+    errors.push({ msg: 'Spell requires a name, school, level, casting time, range, duration, and description'});
   };
 
-  Spell.create(newSpell, (err, createdSpell) => {
-    if (err) throw err;
+  // Check for at least one checked component
+  if (typeof components === 'undefined') {
+    errors.push({ msg: 'Spell requires at least one component'});
+  };
 
-    res.redirect('/spells');
-  });
+  if (errors.length > 0) {
+    res.render('./spells/new.ejs', {
+      errors
+    });
+  } else {
+    // Validation passed
+    const newSpell = {
+      name: name,
+      school: school,
+      level: level,
+      time: time,
+      range: range,
+      components: components,
+      material: material,
+      concentration: concentration,
+      duration: duration,
+      desc: desc,
+      higherLevel: higherLevel,
+      author: {
+        id: req.user.id,
+        name: req.user.name
+      }
+    };
+  
+    Spell.create(newSpell, (err, createdSpell) => {
+      if (err) throw err;
+  
+      res.redirect('/spells');
+    });
+  };
 });
 
 // ====== NEW
 router.get('/new', ensureAuthenticated, (req, res) => {
-  res.render('./spells/new.ejs');
+  res.render('./spells/new.ejs', { user: req.user });
 });
 
 // ====== EDIT
