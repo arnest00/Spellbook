@@ -25,6 +25,7 @@ const SpellSchema = new mongoose.Schema({
     type: [String],
     required: true
   },
+  material: String,
   concentration: String,
   duration: { 
     type: String,

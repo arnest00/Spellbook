@@ -10,7 +10,12 @@
 
         <div class="form-group">
           <label class="form-group-label" for="spell-name">Name:</label>
-          <input id="spell-name" type="text" name="name">
+          <input
+            id="spell-name"
+            type="text"
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+            name="name"
+          >
         </div>
 
         <div class="form-group">
@@ -45,40 +50,86 @@
 
         <div class="form-group">
           <label class="form-group-label" for="spell-time">Casting Time:</label>
-          <input id="spell-time" type="text" name="time">
+          <input
+            id="spell-time"
+            type="text"
+            value="<%= typeof time != 'undefined' ? time : '' %>"
+            name="time"
+          >
         </div>
 
         <div class="form-group">
           <label class="form-group-label" for="spell-range">Range:</label>
-          <input id="spell-range" type="text" name="range">
+          <input
+            id="spell-range"
+            type="text"
+            value="<%= typeof range != 'undefined' ? range : '' %>"
+            name="range"
+          >
         </div>
 
         <div class="form-group">
           <span id="spell-components" class="form-group-label">Components:</span>
           <div class="checkbox-group">
-            <input id="verbal" type="checkbox" name="components[]" value="v"><label for="verbal">V</label>
-            <input id="somatic" type="checkbox" name="components[]" value="s"><label for="somatic">S</label>
-            <input id="material" type="checkbox" name="components[]" value="m"><label for="material">M</label>
+            <input
+              id="verbal"
+              type="checkbox"
+              name="components[]"
+              value="v"><label for="verbal">V</label>
+            <input
+              id="somatic"
+              type="checkbox"
+              name="components[]"
+              value="s"><label for="somatic">S</label>
+            <input
+              id="material"
+              type="checkbox"
+              name="components[]"
+              value="m"><label for="material">M</label>
           </div>
-          <input id="spell-material" type="text" placeholder="powdered rhubarb leaf and an adder's stomach" name="material">
+          <input
+            id="spell-material"
+            type="text"
+            placeholder="powdered rhubarb leaf and an adder's stomach"
+            value="<%= typeof material != 'undefined' ? material : '' %>"
+            name="material"
+          >
         </div>
 
         <div class="form-group">
           <label class="form-group-label" for="spell-duration">Duration:</label>
           <div class="checkbox-group">
-            <input id="concentration" type="checkbox" name="concentration"><label for="concentration">Concentration</label>
+            <input
+              id="concentration"
+              type="checkbox"
+              name="concentration"><label for="concentration">Concentration</label>
           </div>
-          <input id="spell-duration" type="text" name="duration">
+          <input
+            id="spell-duration"
+            type="text"
+            value="<%= typeof duration != 'undefined' ? duration : '' %>"
+            name="duration"
+          >
         </div>
 
         <div class="form-group-textarea">
           <label for="spell-desc">Description:</label>
-          <textarea id="spell-desc" cols="30" rows="10" name="desc"></textarea>
+          <textarea
+            id="spell-desc"
+            cols="30"
+            rows="10"
+            value="<%= typeof desc != 'undefined' ? desc : '' %>"
+            name="desc"></textarea>
         </div>
 
         <div class="form-group-textarea">
           <label for="spell-higher-level">At Higher Level:</label>
-          <textarea id="spell-desc" cols="30" rows="5" name="higherLevel"></textarea>
+          <textarea
+            id="spell-desc"
+            cols="30"
+            rows="5"
+            value="<%= typeof higherLevel != 'undefined' ? higherLevel : '' %>"
+            name="higherLevel"></textarea>
         </div>
 
         <div class="form-group">

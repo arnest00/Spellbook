@@ -23,7 +23,8 @@ require('./passport')(passport);
 // ====== Connect to MongoDB
 mongoose.connect(db, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 })
   .then(() => console.log('Connected to database!'))
   .catch(error => console.log(error));
