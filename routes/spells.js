@@ -7,7 +7,9 @@ const Spell = require('../models/Spell');
 
 // ====== INDEX
 router.get('/', ensureAuthenticated, (req, res) => {
-  Spell.find({}, (err, allSpells) => {
+  Spell.find({
+    'author.id': req.user.id
+  }, (err, allSpells) => {
     if (err) throw err;
 
     res.render('./spells/spells.ejs', { customSpells: allSpells, user: req.user });
