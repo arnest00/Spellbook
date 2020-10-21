@@ -16,6 +16,11 @@ router.get('/', ensureAuthenticated, (req, res) => {
   });
 });
 
+// ====== NEW
+router.get('/new', ensureAuthenticated, (req, res) => {
+  res.render('./spells/new.ejs', { user: req.user });
+});
+
 // ====== CREATE
 router.post('/', ensureAuthenticated, (req, res) => {
   const { name, school, level, time, range, components, material, concentration, duration, desc, higherLevel } = req.body;
@@ -59,14 +64,10 @@ router.post('/', ensureAuthenticated, (req, res) => {
     Spell.create(newSpell, err => {
       if (err) throw err;
   
+      req.flash('success_msg', 'Successfully added spell');
       res.redirect('/spells');
     });
   };
-});
-
-// ====== NEW
-router.get('/new', ensureAuthenticated, (req, res) => {
-  res.render('./spells/new.ejs', { user: req.user });
 });
 
 // ====== EDIT
@@ -123,6 +124,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
     Spell.findByIdAndUpdate(req.params.id, updatedSpell, err => {
       if (err) throw err;
 
+      req.flash('success_msg', 'Successfully edited spell');
       res.redirect('/spells');
     });
   };
@@ -133,6 +135,7 @@ router.delete('/:id', ensureAuthenticated, (req, res) => {
   Spell.findByIdAndRemove(req.params.id, err => {
     if (err) throw err;
 
+    req.flash('success_msg', 'Successfully deleted spell');
     res.redirect('/spells');
   });
 });
