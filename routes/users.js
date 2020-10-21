@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
-const { ensureAuthenticated, forwardAuthenticated } = require('../auth');
+const express = require('express'),
+      router = express.Router(),
+      bcrypt = require('bcryptjs'),
+      passport = require('passport'),
+      { ensureAuthenticated, forwardAuthenticated } = require('../middleware');
 
 // ====== User model
 const User = require('../models/User');

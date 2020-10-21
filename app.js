@@ -27,7 +27,7 @@ mongoose.connect(db, {
   useFindAndModify: false
 })
   .then(() => console.log('Connected to database!'))
-  .catch(error => console.log(error));
+  .catch(err => console.log(err));
 
 // ====== EJS
 app.set('view engine', 'ejs');
@@ -55,7 +55,6 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
   next();
 });
 

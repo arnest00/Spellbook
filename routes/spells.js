@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const { ensureAuthenticated } = require('../auth');
+const express = require('express'),
+      router = express.Router(),
+      { ensureAuthenticated, checkSpellAuthorship } = require('../middleware');
 
 // ====== Spell model
 const Spell = require('../models/Spell');
@@ -71,18 +71,18 @@ router.post('/', ensureAuthenticated, (req, res) => {
 });
 
 // ====== EDIT
-router.get("/:id/edit", ensureAuthenticated, (req, res) => {
+router.get("/:id/edit", checkSpellAuthorship, (req, res) => {
   Spell.findById({
       '_id': req.params.id
   })
     .then(results => {
       res.render('./spells/edit.ejs', { spell: results, user: req.user } );
     })
-    .catch(error => console.error(error));
+    .catch(err => console.error(err));
 });
 
 // ====== UPDATE
-router.put('/:id', ensureAuthenticated, (req, res) => {
+router.put('/:id', checkSpellAuthorship, (req, res) => {
   const { name, school, level, time, range, components, material, concentration, duration, desc, higherLevel } = req.body;
   let errors = [];
 
@@ -104,7 +104,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
           spell
         });
       })
-      .catch(error => console.error(error));
+      .catch(err => console.error(err));
   } else {
     // Validation passed
     const updatedSpell = {
@@ -131,7 +131,7 @@ router.put('/:id', ensureAuthenticated, (req, res) => {
 });
 
 // ====== DESTROY
-router.delete('/:id', ensureAuthenticated, (req, res) => {
+router.delete('/:id', checkSpellAuthorship, (req, res) => {
   Spell.findByIdAndRemove(req.params.id, err => {
     if (err) throw err;
 
