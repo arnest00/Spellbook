@@ -9,7 +9,8 @@ const express = require('express'),
 
 const indexRoutes = require('./routes/index'),
       spellRoutes = require('./routes/spells'),
-      userRoutes = require('./routes/users');
+      userRoutes = require('./routes/users'),
+      searchRoutes = require('./routes/search');
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.use((req, res, next) => {
 app.use('/', indexRoutes)
 app.use('/spells', spellRoutes);
 app.use('/users', userRoutes);
+app.use('/search', searchRoutes);
     
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}!`);

@@ -228,4 +228,9 @@ a {
   margin: 0 auto;
 }
 
+#search-form-container {
+  width: 66%;
+  margin: 0 auto;
+}
+
 /*# sourceMappingURL=main.css.map */

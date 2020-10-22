@@ -1,0 +1,61 @@
+<%- include('../partials/header') %>
+
+  <div id="spells-main">
+    <h1>Search for Spell</h1>
+    <%- include('../partials/messages') %>
+
+    <div id="search-form-container">
+      <form>
+        <div class="form-group">
+          <label class="form-group-label" for="spell-levels">Filter by Level:</label>
+          <select id="spell-levels" name="level">
+            <option value="all">All Levels</option>
+            <option value="0">Cantrip</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-group-label" for="spell-classes">Filter by Class:</label>
+          <select id="spell-classes" name="class">
+            <option value="all">All Classes</option>
+            <option value="bard">Bard</option>
+            <option value="cleric">Cleric</option>
+            <option value="druid">Druid</option>
+            <option value="paladin">Paladin</option>
+            <option value="ranger">Ranger</option>
+            <option value="sorcerer">Sorcerer</option>
+            <option value="warlock">Warlock</option>
+            <option value="wizard">Wizard</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-group-label" for="spell-schools">Filter by School:</label>
+          <select id="spell-levels" name="level">
+            <option value="all">All Schools</option>
+            <option value="abjuration">Abjuration</option>
+            <option value="conjuration">Conjuration</option>
+            <option value="divination">Divination</option>
+            <option value="enchantment">Enchantment</option>
+            <option value="evocation">Evocation</option>
+            <option value="illusion">Illusion</option>
+            <option value="necromancy">Necromancy</option>
+            <option value="transmutation">Transmutation</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+<script src="/js/search.js"></script>
+<%- include('../partials/footer') %>
