@@ -152,14 +152,16 @@ a {
   align-items: center;
   margin-bottom: 0.34rem;
 }
-.form-group input {
+.form-group input,
+.form-group select {
   flex: 1 1;
   padding: 0.125rem 0.06rem;
 }
 .form-group .form-group-label {
   margin-right: 0.17rem;
 }
-.form-group .button-confirm {
+.form-group .button-confirm,
+.form-group .button-more {
   flex: 1;
 }
 
@@ -228,7 +230,8 @@ a {
   margin: 0 auto;
 }
 
-#search-form-container {
+#search-form-container,
+#search-results-container {
   width: 66%;
   margin: 0 auto;
 }

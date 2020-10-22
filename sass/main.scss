@@ -169,7 +169,8 @@ a {
   align-items: center;
   margin-bottom: 0.34rem;
 
-  input {
+  input,
+  select {
     flex: 1 1;
     padding: 0.125rem 0.06rem;
   }
@@ -178,7 +179,8 @@ a {
     margin-right: 0.17rem;
   }
 
-  .button-confirm {
+  .button-confirm,
+  .button-more {
     flex: 1;
   }
 }
@@ -255,7 +257,8 @@ a {
   margin: 0 auto;
 }
 
-#search-form-container {
+#search-form-container,
+#search-results-container {
   width: 66%;
   margin: 0 auto;
 }

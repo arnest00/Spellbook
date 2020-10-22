@@ -23,55 +23,55 @@
       <% } %></h2>
 
       <div class="spells-container">
-        <% for (let spell = 0; spell < customSpells.length; spell++) { %>
-          <% if (Number(customSpells[spell].level.charAt(0)) === level) { %>
+        <% for (let spell = 0; spell < spells.length; spell++) { %>
+          <% if (Number(spells[spell].level.charAt(0)) === level) { %>
             <div class="spell-card">
               <div class="spell-card-content-container">
                 <div class="spell-card-name-container">
-                  <h3><%= customSpells[spell].name %></h3>
+                  <h3><%= spells[spell].name %></h3>
                   <span class="spell-card-hidden" href="#">&#x25BC;</span>
                 </div>
 
                 <div class="spell-card-info-container hidden">
                   <p><em><%=
-                    customSpells[spell].level === '0th' ?
-                      `${customSpells[spell].school} cantrip` :
-                      `${customSpells[spell].level}-level ${customSpells[spell].school}`
+                    spells[spell].level === '0th' ?
+                      `${spells[spell].school} cantrip` :
+                      `${spells[spell].level}-level ${spells[spell].school}`
                   %></em></p>
   
                   <p><strong>Casting Time:</strong> <%=
-                    customSpells[spell].time
+                    spells[spell].time
                   %></p>
   
                   <p><strong>Range:</strong> <%=
-                    customSpells[spell].range
+                    spells[spell].range
                   %></p>
   
                   <p><strong>Components:</strong> <%=
-                    customSpells[spell].components.join(', ').toUpperCase()
+                    spells[spell].components.join(', ').toUpperCase()
                   %> <%=
-                    customSpells[spell].material ?
-                      `(${customSpells[spell].material})` :
+                    spells[spell].material ?
+                      `(${spells[spell].material})` :
                       ''
                   %></p>
   
                   <p><strong>Duration:</strong> <%=
-                    customSpells[spell].concentration === 'on' ?
-                      `Concentration, ${customSpells[spell].duration}` :
-                      `${customSpells[spell].duration}`
+                    spells[spell].concentration === 'on' ?
+                      `Concentration, ${spells[spell].duration}` :
+                      `${spells[spell].duration}`
                   %></p>
   
-                  <p><%= customSpells[spell].desc %></p>
+                  <p><%= spells[spell].desc %></p>
   
-                  <% if (customSpells[spell].higherLevel) { %>
+                  <% if (spells[spell].higherLevel) { %>
                     <p><strong>At Higher Levels.</strong> <%=
-                      customSpells[spell].higherLevel
+                      spells[spell].higherLevel
                     %></p>
                   <% } %>
 
                   <div class="spell-card-actions-container">
-                    <a class="button button-more" href="/spells/<%= customSpells[spell]._id %>/edit">Edit</a>
-                    <form class="delete-form" action="/spells/<%= customSpells[spell]._id %>?_method=DELETE" method="post">
+                    <a class="button button-more" href="/spells/<%= spells[spell]._id %>/edit">Edit</a>
+                    <form class="delete-form" action="/spells/<%= spells[spell]._id %>?_method=DELETE" method="post">
                       <input class="button button-danger" type="submit" value="Delete">
                     </form>
                   </div>
@@ -86,5 +86,5 @@
     <% } %>
   </div>
 
-  <script src="/js/spells.js"></script>
+  <script src="/js/main.js"></script>
   <%- include('../partials/footer') %>

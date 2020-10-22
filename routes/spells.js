@@ -12,7 +12,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
   }, (err, allSpells) => {
     if (err) throw err;
 
-    res.render('./spells/spells.ejs', { customSpells: allSpells, user: req.user });
+    res.render('./spells/spells.ejs', { spells: allSpells, user: req.user });
   });
 });
 
