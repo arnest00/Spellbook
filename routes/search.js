@@ -8,40 +8,44 @@ const express = require('express'),
 const Spell = require('../models/Spell');
 
 /// ====== API url
-// const url = "https://www.dnd5eapi.co/api/spells?";
 const url = "https://api.open5e.com/spells?";
 
 // ====== Display search form
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   if (Object.keys(req.query).length) {
     const searchedLevel = req.query.level;
     const searchedClass = req.query.class;
     const searchedSchool = req.query.school;
+    let pageCounter = 1;
 
-    fetch(url + new URLSearchParams({
-      level: `${searchedLevel}`,
-      school: `${searchedSchool}`
-    }))
-      .then(response => response.json())
-      .then(data => {
-        let foundSpells = [];
-  
-        data.results.forEach(spell => {
-          if (spell.dnd_class.includes(searchedClass)) {
-            foundSpells.push({
-              name: spell.name,
-              school: spell.school,
-              class: spell.dnd_class
-            });
-          };
-        });
+    let foundSpells = [];
+    let next;
+    do {
+      let queryStr = `level=${searchedLevel}&school=${searchedSchool}&page=${pageCounter}`;
 
-        res.render('./search/search.ejs', { foundSpells: foundSpells });
-      })
-      .catch(err => console.error(err));
+      const response = await fetch(`${url}${queryStr}`);
+      const data = await response.json();
+
+      data.results.forEach(spell => {
+        if (spell.dnd_class.includes(searchedClass)) {
+          foundSpells.push({
+            name: spell.name,
+            school: spell.school,
+            class: spell.dnd_class
+          });
+        };
+      });
+
+      next = data.next;
+      pageCounter += 1;
+    } while (next);
+
+    res.render('./search/search.ejs', { foundSpells: foundSpells });
   } else {
     res.render('./search/search.ejs');
   };
 });
+
+// ====== Display chosen spell
 
 module.exports = router;
