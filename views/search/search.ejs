@@ -27,14 +27,14 @@
           <label class="form-group-label" for="spell-classes">Filter by Class:</label>
           <select id="spell-classes" name="class">
             <option value="">All Classes</option>
-            <option value="bard">Bard</option>
-            <option value="cleric">Cleric</option>
-            <option value="druid">Druid</option>
-            <option value="paladin">Paladin</option>
-            <option value="ranger">Ranger</option>
-            <option value="sorcerer">Sorcerer</option>
-            <option value="warlock">Warlock</option>
-            <option value="wizard">Wizard</option>
+            <option value="Bard">Bard</option>
+            <option value="Cleric">Cleric</option>
+            <option value="Druid">Druid</option>
+            <option value="Paladin">Paladin</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Sorcerer">Sorcerer</option>
+            <option value="Warlock">Warlock</option>
+            <option value="Wizard">Wizard</option>
           </select>
         </div>
 
@@ -60,7 +60,13 @@
     </div>
 
     <div id="search-results-container">
-      
+      <ul>
+        <% if (typeof foundSpells !== 'undefined') { %>
+          <% for (let spell = 0; spell< foundSpells.length; spell++) { %>
+            <li><%= foundSpells[spell].name %> - <%= foundSpells[spell].school %> - <%= foundSpells[spell].class %></li>
+          <% } %>
+        <% } %>
+      </ul>
     </div>
   </div>
 
