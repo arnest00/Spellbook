@@ -1,7 +1,6 @@
 const express = require('express'),
       router = express.Router(),
       fetch = require("node-fetch"),
-      { URLSearchParams } = require('url'),
       { ensureAuthenticated } = require('../middleware');
 
 // ====== Spell model
@@ -30,8 +29,8 @@ router.get('/', async (req, res) => {
         if (spell.dnd_class.includes(searchedClass)) {
           foundSpells.push({
             name: spell.name,
-            school: spell.school,
-            class: spell.dnd_class
+            level: spell.level,
+            school: spell.school
           });
         };
       });

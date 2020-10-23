@@ -236,4 +236,14 @@ a {
   margin: 0 auto;
 }
 
+#search-results-container table {
+  width: 100%;
+}
+#search-results-container table th {
+  font-weight: 700;
+}
+#search-results-container table td {
+  text-align: center;
+}
+
 /*# sourceMappingURL=main.css.map */

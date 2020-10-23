@@ -60,13 +60,29 @@
     </div>
 
     <div id="search-results-container">
-      <ul>
-        <% if (typeof foundSpells !== 'undefined') { %>
-          <% for (let spell = 0; spell< foundSpells.length; spell++) { %>
-            <li><%= foundSpells[spell].name %> - <%= foundSpells[spell].school %> - <%= foundSpells[spell].class %></li>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Level</th>
+            <th>School</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if (typeof foundSpells !== 'undefined') { %>
+            <% for (let spell = 0; spell< foundSpells.length; spell++) { %>
+              <tr>
+                <td><%= foundSpells[spell].name %></td>
+                <td><%= foundSpells[spell].level %></td>
+                <td><%= foundSpells[spell].school %></td>
+                <td><button>Click Me!</button></td>
+              </tr>
+            <% } %>
           <% } %>
-        <% } %>
-      </ul>
+        </tbody>
+      </table>
     </div>
   </div>
 
