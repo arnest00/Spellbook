@@ -30,7 +30,8 @@ router.get('/', async (req, res) => {
           foundSpells.push({
             name: spell.name,
             level: spell.level,
-            school: spell.school
+            school: spell.school,
+            slug: spell.slug
           });
         };
       });
