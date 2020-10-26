@@ -47,5 +47,14 @@ router.get('/', async (req, res) => {
 });
 
 // ====== Display chosen spell
+router.get('/:spell', async (req, res) => {
+  let queryStr = `slug=${ req.params.spell }`;
+
+  const response = await fetch(`${url}${queryStr}`);
+  const data = await response.json();
+
+  console.log(data.results[0]);
+  res.render('./search/spell.ejs', { foundSpell: data.results[0] });
+});
 
 module.exports = router;
