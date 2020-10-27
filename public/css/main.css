@@ -242,12 +242,21 @@ a {
 
 #search-results-container table {
   width: 100%;
+  border-collapse: collapse;
+}
+#search-results-container table th,
+#search-results-container table td {
+  text-align: left;
+  padding: 0.5rem 1rem;
 }
 #search-results-container table th {
   font-weight: 700;
 }
-#search-results-container table td {
-  text-align: center;
+#search-results-container table tbody tr:nth-child(2n) {
+  background-color: rgba(39, 33, 39, 0.1);
+}
+#search-results-container table a {
+  width: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -269,12 +269,23 @@ a {
 
 #search-results-container table {
   width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    text-align: left;
+    padding: 0.5rem 1rem;
+  }
 
   th {
     font-weight: 700;
   }
 
-  td {
-    text-align: center;
+  tbody tr:nth-child(2n) {
+    background-color: rgba($palette-dark, 0.1);
+  }
+
+  a {
+    width: 100%;
   }
 }
