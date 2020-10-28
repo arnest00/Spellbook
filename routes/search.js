@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     let foundSpells = [];
     let next;
     do {
-      let queryStr = `level=${searchedLevel}&school=${searchedSchool}&page=${pageCounter}`;
+      let queryStr = `level=${searchedLevel}&school=${searchedSchool}&ordering=level_int&document__slug=wotc-srd&page=${pageCounter}`;
 
       const response = await fetch(`${url}${queryStr}`);
       const data = await response.json();
@@ -52,9 +52,23 @@ router.get('/:spell', async (req, res) => {
 
   const response = await fetch(`${url}${queryStr}`);
   const data = await response.json();
+  const foundSpell = {
+    name: data.results[0].name,
+    desc: data.results[0].desc,
+    higherLevel: data.results[0].higher_level,
+    range: data.results[0].range,
+    material: data.results[0].material,
+    duration: data.results[0].duration,
+    concentration: data.results[0].concentration,
+    time: data.results[0].casting_time,
+    school: data.results[0].school
+  }
+  foundSpell.components = data.results[0].components.toLowerCase().split(', ');
+  foundSpell.concentration = data.results[0].concentration === 'yes' ? 'on' : null;
+  foundSpell.level = data.results[0].level === 'Cantrip' ? '0th' : data.results[0].level.slice(0,3);
 
-  console.log(data.results[0]);
-  res.render('./search/spell.ejs', { foundSpell: data.results[0] });
+  console.log(foundSpell);
+  res.render('./search/spell.ejs', { foundSpell: foundSpell });
 });
 
 module.exports = router;
