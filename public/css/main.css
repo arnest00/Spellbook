@@ -259,4 +259,8 @@ a {
   width: 100%;
 }
 
+#search-results-container p {
+  margin: 0.34rem 0;
+}
+
 /*# sourceMappingURL=main.css.map */

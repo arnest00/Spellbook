@@ -10,7 +10,7 @@ const Spell = require('../models/Spell');
 const url = "https://api.open5e.com/spells?";
 
 // ====== Display search form
-router.get('/', async (req, res) => {
+router.get('/', ensureAuthenticated, async (req, res) => {
   if (Object.keys(req.query).length) {
     const searchedLevel = req.query.level;
     const searchedClass = req.query.class;
@@ -47,27 +47,26 @@ router.get('/', async (req, res) => {
 });
 
 // ====== Display chosen spell
-router.get('/:spell', async (req, res) => {
+router.get('/:spell', ensureAuthenticated, async (req, res) => {
   let queryStr = `slug=${ req.params.spell }`;
 
   const response = await fetch(`${url}${queryStr}`);
   const data = await response.json();
   const foundSpell = {
     name: data.results[0].name,
-    desc: data.results[0].desc,
     higherLevel: data.results[0].higher_level,
     range: data.results[0].range,
-    material: data.results[0].material,
-    duration: data.results[0].duration,
+    material: data.results[0].material.toLowerCase().slice(0,-1),
+    duration: data.results[0].duration.toLowerCase(),
     concentration: data.results[0].concentration,
     time: data.results[0].casting_time,
-    school: data.results[0].school
-  }
+    school: data.results[0].school.toLowerCase()
+  };
+  foundSpell.desc = data.results[0].desc.split('\n');
   foundSpell.components = data.results[0].components.toLowerCase().split(', ');
   foundSpell.concentration = data.results[0].concentration === 'yes' ? 'on' : null;
   foundSpell.level = data.results[0].level === 'Cantrip' ? '0th' : data.results[0].level.slice(0,3);
 
-  console.log(foundSpell);
   res.render('./search/spell.ejs', { foundSpell: foundSpell });
 });
 

@@ -2,6 +2,53 @@
 
   <div id="spells-main">
     <h1><%= foundSpell.name %></h1>
+
+    <div id="search-results-container">
+      <p><em><%=
+        foundSpell.level === '0th' ?
+          `${foundSpell.school} cantrip` :
+          `${foundSpell.level}-level ${foundSpell.school}`
+      %></em></p>
+
+      <p><strong>Casting Time:</strong> <%=
+        foundSpell.time
+      %></p>
+
+      <p><strong>Range:</strong> <%=
+        foundSpell.range
+      %></p>
+
+      <p><strong>Components:</strong> <%=
+        foundSpell.components.join(', ').toUpperCase()
+      %> <%=
+        foundSpell.material ?
+          `(${foundSpell.material})` :
+          ''
+      %></p>
+
+      <p><strong>Duration:</strong> <%=
+        foundSpell.concentration === 'on' ?
+          `Concentration, ${foundSpell.duration}` :
+          `${foundSpell.duration}`
+      %></p>
+
+      <% for (let i = 0; i < foundSpell.desc.length; i++) { %>
+        <p><%= foundSpell.desc[i] %></p>
+      <% } %>
+
+      <% if (foundSpell.higherLevel) { %>
+        <p><strong>At Higher Levels.</strong> <%=
+          foundSpell.higherLevel
+        %></p>
+      <% } %>
+
+      <div class="spell-card-actions-container">
+        <form class="save-form" action="/search" method="POST">
+          <button class="button button-confirm" id="submit-button" type="submit">Save to Spellbook</button>
+        </form>
+        <a class="button button-danger" href="/search">Cancel</a>
+      </div>
+    </div>
     
   </div>
 
