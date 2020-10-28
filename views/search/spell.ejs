@@ -43,7 +43,7 @@
       <% } %>
 
       <div class="spell-card-actions-container">
-        <form class="save-form" action="/search" method="POST">
+        <form class="save-form" action="/search/<%= foundSpell.slug %>" method="POST">
           <button class="button button-confirm" id="submit-button" type="submit">Save to Spellbook</button>
         </form>
         <a class="button button-danger" href="/search">Cancel</a>
