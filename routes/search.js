@@ -3,7 +3,6 @@ const express = require('express'),
       fetch = require("node-fetch"),
       { ensureAuthenticated } = require('../middleware');
 
-const { create } = require('../models/Spell');
 // ====== Spell model
 const Spell = require('../models/Spell');
 
@@ -53,20 +52,6 @@ router.get('/:spell', ensureAuthenticated, async (req, res) => {
 
   const response = await fetch(`${url}${queryStr}`);
   const data = await response.json();
-  // const foundSpell = {
-  //   name: data.results[0].name,
-  //   higherLevel: data.results[0].higher_level,
-  //   range: data.results[0].range,
-  //   material: data.results[0].material.toLowerCase().slice(0,-1),
-  //   duration: data.results[0].duration.toLowerCase(),
-  //   concentration: data.results[0].concentration,
-  //   time: data.results[0].casting_time,
-  //   school: data.results[0].school.toLowerCase()
-  // };
-  // foundSpell.desc = data.results[0].desc.split('\n');
-  // foundSpell.components = data.results[0].components.toLowerCase().split(', ');
-  // foundSpell.concentration = data.results[0].concentration === 'yes' ? 'on' : null;
-  // foundSpell.level = data.results[0].level === 'Cantrip' ? '0th' : data.results[0].level.slice(0,3);
   const foundSpell = createSpellObj(data.results[0]);
 
   res.render('./search/spell.ejs', { foundSpell: foundSpell });
@@ -91,7 +76,7 @@ router.post('/:spell', ensureAuthenticated, async (req, res) => {
   });
 });
 
-// ====== Extract relevant data
+// ====== Function to extract relevant data
 const createSpellObj = data => {
   return {
     name: data.name,
