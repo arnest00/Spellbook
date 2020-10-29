@@ -53,6 +53,7 @@ router.get('/:spell', ensureAuthenticated, async (req, res) => {
   const response = await fetch(`${url}${queryStr}`);
   const data = await response.json();
   const foundSpell = createSpellObj(data.results[0]);
+  foundSpell.desc = foundSpell.desc.split('\n');
 
   res.render('./search/spell.ejs', { foundSpell: foundSpell });
 });
@@ -87,7 +88,7 @@ const createSpellObj = data => {
     components: data.components.toLowerCase().split(', '),
     material: data.material.toLowerCase().slice(0,-1),
     concentration: data.concentration === 'yes' ? 'on' : null,
-    duration: data.duration.toLowerCase(),
+    duration: data.duration === 'Instantaneous' ? data.duration : data.duration.toLowerCase(),
     concentration: data.concentration,
     time: data.casting_time,
     school: data.school.toLowerCase(),
