@@ -73,6 +73,7 @@ router.post('/:spell', ensureAuthenticated, async (req, res) => {
   Spell.create(newSpell, err => {
     if (err) throw err;
 
+    req.flash('success_msg', 'Successfully added spell');
     res.redirect('/spells');
   });
 });

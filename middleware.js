@@ -14,7 +14,6 @@ module.exports = {
       return next();
     };
 
-    req.flash('success_msg', 'You are already logged in')
     res.redirect('/spells');
   },
   checkSpellAuthorship: (req, res, next) => {
