@@ -10,7 +10,7 @@ const Spell = require('../models/Spell');
 const url = "https://api.open5e.com/spells?";
 
 // ====== Display search form
-router.get('/', ensureAuthenticated, async (req, res) => {
+router.get('/', async (req, res) => {
   if (Object.keys(req.query).length) {
     const searchedLevel = req.query.level;
     const searchedClass = req.query.class;
@@ -47,7 +47,7 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 });
 
 // ====== Display chosen spell
-router.get('/:spell', ensureAuthenticated, async (req, res) => {
+router.get('/:spell', async (req, res) => {
   let queryStr = `slug=${ req.params.spell }`;
 
   const response = await fetch(`${url}${queryStr}`);

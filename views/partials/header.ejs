@@ -21,10 +21,10 @@
     </div>
     <div id="navbar-menu-container">
       <ul id="navbar-left">
-        <% if (typeof user !== 'undefined') { %>
           <li><a href="/search">Search for a Spell</a></li>
-          <li><a href="/spells/new">Add Custom Spell</a></li>
-        <% } %>
+          <% if (typeof user !== 'undefined') { %>
+            <li><a href="/spells/new">Add Custom Spell</a></li>
+          <% } %>
       </ul>
       <ul id="navbar-right">
         <% if (typeof user !== 'undefined') { %>
