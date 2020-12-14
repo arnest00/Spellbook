@@ -12,7 +12,7 @@ This is a CRUD web application that helps tabletop RPG players look up and keep 
 
 ## Live Demo
 
-![Screenshot of live demo](./my-spellbok-demo.png)
+![Screenshot of live demo](./my-spellbook-demo.png)
 
 [Try out the live demo of the project.](https://my-spellbook.herokuapp.com/)
 
