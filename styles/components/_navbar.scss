@@ -1,0 +1,27 @@
+.cmp-navbar {
+  background-color: color("primary");
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+
+  &__logo,
+  &__item {
+    color: color("light");
+  }
+
+  &__logo {
+    @include semibold;
+
+    font-family: font-family("serif");
+    font-size: font-size("lg");
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+  }
+
+  li {
+    margin: 0 1rem;
+  }
+}
