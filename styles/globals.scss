@@ -2,6 +2,7 @@
 @import "./settings/colors";
 @import "./settings/font-families";
 @import "./settings/font-sizes";
+@import "./settings/variables";
 
 // Tools
 @import "./tools/functions";
@@ -19,6 +20,8 @@
 @import "./objects/layout";
 
 // Components
+@import "./components/button";
+@import "./components/select-input";
 @import "./components/navbar";
 
 // Vendors
