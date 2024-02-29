@@ -1,0 +1,14 @@
+.cmp-button {
+  width: 100%;
+  border: 2px solid color("secondary");
+  background-color: color("secondary");
+  padding: 0.34rem 1rem;
+  color: color("white");
+  font-size: font-size("md");
+  border-radius: 0.167rem;
+
+  &:hover {
+    background-color: transparent;
+    color: color("secondary");
+  }
+}

@@ -1,0 +1,19 @@
+.cmp-select-input {
+  margin: 0.5rem 0rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  @media (min-width: $sm-screen-width) {
+    margin: 0.5rem 0rem;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  &__input {
+    flex-grow: 1;
+    border-radius: 0.167rem;
+    padding: 0.25rem;
+    font-size: font-size("sm");
+  }
+}
