@@ -1,0 +1,9 @@
+.cmp-spell-card {
+  &__category {
+    font-style: italic;
+  }
+
+  &__label {
+    @include semibold;
+  }
+}
