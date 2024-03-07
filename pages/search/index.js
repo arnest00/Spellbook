@@ -1,6 +1,9 @@
+import Head from 'next/head';
 import Button from '@/components/Button';
 import Layout from '@/components/Layout';
 import SelectInput from '@/components/SelectInput';
+import SpellTable from '@/components/SpellTable';
+import apiService from '@/services/apiService';
 
 const SPELL_LEVEL_SELECT = {
   labelText: 'Filter by Level:',
@@ -8,19 +11,18 @@ const SPELL_LEVEL_SELECT = {
   inputName: 'level',
   options: [
     { value: '', name: 'All Levels' },
-    { value: 'Cantrip', name: 'Cantrip' },
-    { value: '1st-level', name: '1' },
-    { value: '2nd-level', name: '2' },
-    { value: '3rd-level', name: '3' },
-    { value: '4th-level', name: '4' },
-    { value: '5th-level', name: '5' },
-    { value: '6th-level', name: '6' },
-    { value: '7th-level', name: '7' },
-    { value: '8th-level', name: '8' },
-    { value: '9th-level', name: '9' },
+    { value: '0', name: 'Cantrip' },
+    { value: '1', name: '1st-level' },
+    { value: '2', name: '2nd-level' },
+    { value: '3', name: '3rd-level' },
+    { value: '4', name: '4th-level' },
+    { value: '5', name: '5th-level' },
+    { value: '6', name: '6th-level' },
+    { value: '7', name: '7th-level' },
+    { value: '8', name: '8th-level' },
+    { value: '9', name: '9th-level' },
   ],
 };
-
 const SPELL_CLASS_SELECT = {
   labelText: 'Filter by Class:',
   queryValue: 'spell-classes',
@@ -37,7 +39,6 @@ const SPELL_CLASS_SELECT = {
     { value: 'Wizard', name: 'Wizard' },
   ],
 };
-
 const SPELL_SCHOOL_SELECT = {
   labelText: 'Filter by School:',
   queryValue: 'spell-schools',
@@ -55,9 +56,12 @@ const SPELL_SCHOOL_SELECT = {
   ],
 };
 
-const SearchPage = () => {
+const SearchPage = ({ spells, message }) => {
   return (
     <Layout>
+      <Head>
+        <title>My Spellbook - Search for a Spell</title>
+      </Head>
       <section>
         <h1 className="util-align-center">Search for a Spell</h1>
         <form>
@@ -68,9 +72,42 @@ const SearchPage = () => {
             <Button type="submit" buttonText="Search" />
           </div>
         </form>
-      </section>  
+      </section>
+      <section>
+        <h2>Found Spells</h2>
+        {spells.length
+        ? (
+          <>
+            <p>{spells.length} spells found.</p>
+            <SpellTable spells={spells} />
+          </>
+        ) : <p>{message}</p>}
+      </section>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  let spells = [];
+  let message = 'Search for spells using the form above.';
+
+  if (Object.keys(context.query).length !== 0) {
+    const { query } = context;
+    const levelQuery = query.level || '';
+    const classQuery = query.class || '';
+    const schoolQuery = query.school || '';
+
+    spells = await apiService.getSpells(levelQuery, classQuery, schoolQuery);
+
+    if (!spells.length) message = 'No spells match your query. Try another search.';
+  };
+
+  return {
+    props: {
+      spells,
+      message,
+    },
+  };
 }
 
 export default SearchPage;

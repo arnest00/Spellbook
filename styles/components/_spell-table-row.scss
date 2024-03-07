@@ -1,0 +1,9 @@
+.cmp-spell-table-row {
+  &:nth-child(2n) {
+    background-color: rgba(color("dark"), 0.1);
+  }
+
+  &__cell {
+    padding: 0.5rem 1rem;
+  }
+}

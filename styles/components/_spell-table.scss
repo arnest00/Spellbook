@@ -1,0 +1,15 @@
+.cmp-spell-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__head,
+  &__body {
+    text-align: left;
+  }
+
+  &__header {
+    @include semibold;
+
+    padding: 0.5rem 1rem;
+  }
+}
