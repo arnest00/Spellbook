@@ -60,7 +60,7 @@ const SearchPage = ({ spells, message }) => {
   return (
     <Layout>
       <Head>
-        <title>My Spellbook - Search for a Spell</title>
+        <title>mageHand - Search for a Spell</title>
       </Head>
       <section>
         <h1 className="util-align-center">Search for a Spell</h1>

@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <Layout>
       <Head>
-        <title>My Spellbook</title>
+        <title>mageHand - Welcome!</title>
       </Head>
       <section>
         <h1 className="util-align-center">Welcome!</h1>

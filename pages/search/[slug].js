@@ -7,7 +7,7 @@ const SpellDetailPage = ({ spell }) => {
   return (
     <Layout>
       <Head>
-        <title>My Spellbook - {spell.name}</title>
+        <title>mageHand - {spell.name}</title>
       </Head>
       <SpellCard spell={spell} />
     </Layout>
