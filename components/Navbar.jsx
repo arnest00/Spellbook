@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav className="cmp-navbar">
       <div>
         <Link href="/" className="cmp-navbar__logo">
-          My Spellbook
+          mageHand
         </Link>
       </div>
 
