@@ -1,0 +1,41 @@
+.cmp-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 2.5rem;
+
+  &__link,
+  &__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    border: 2px solid color("dark");
+    border-radius: 0.167rem;
+
+    &:hover {
+      background-color: color("dark");
+      color: color("light");
+      text-decoration: none;
+    }
+  }
+
+  &__link {
+    min-width: 2.5rem;
+
+    &--current {
+      background-color: color("dark");
+      color: color("light");
+
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+
+  &__action {
+    padding: 0 1rem;
+  }
+}

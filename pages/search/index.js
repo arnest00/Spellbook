@@ -1,6 +1,8 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Button from '@/components/Button';
 import Layout from '@/components/Layout';
+import Pagination from '@/components/Pagination';
 import SelectInput from '@/components/SelectInput';
 import SpellTable from '@/components/SpellTable';
 import apiService from '@/services/apiService';
@@ -56,7 +58,11 @@ const SPELL_SCHOOL_SELECT = {
   ],
 };
 
-const SearchPage = ({ spells, message }) => {
+const SearchPage = ({ spells, count, message }) => {
+  const router = useRouter();
+  const searchParams = router.query;
+  const currentPage = Number(router.query.page) || 1;
+
   return (
     <Layout>
       <Head>
@@ -78,8 +84,12 @@ const SearchPage = ({ spells, message }) => {
         {spells.length
         ? (
           <>
-            <p>{spells.length} spells found.</p>
             <SpellTable spells={spells} />
+            <Pagination
+              count={count}
+              currentPage={currentPage}
+              searchParams={searchParams}
+            />
           </>
         ) : <p>{message}</p>}
       </section>
@@ -89,6 +99,7 @@ const SearchPage = ({ spells, message }) => {
 
 export async function getServerSideProps(context) {
   let spells = [];
+  let count = 0;
   let message = 'Search for spells using the form above.';
 
   if (Object.keys(context.query).length !== 0) {
@@ -96,15 +107,21 @@ export async function getServerSideProps(context) {
     const levelQuery = query.level || '';
     const classQuery = query.class || '';
     const schoolQuery = query.school || '';
+    const pageNumber = query.page || 1;
 
-    spells = await apiService.getSpells(levelQuery, classQuery, schoolQuery);
+    const spellData = await apiService.getSpells(levelQuery, classQuery, schoolQuery, pageNumber);
 
-    if (!spells.length) message = 'No spells match your query. Try another search.';
+    if (!spellData.spells.length) message = 'No spells match your query. Try another search.';
+    else {
+      spells = spellData.spells;
+      count = spellData.count;
+    }
   };
 
   return {
     props: {
       spells,
+      count,
       message,
     },
   };
