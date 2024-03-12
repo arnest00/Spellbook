@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const SpellTableRow = ({ name, level, school, slug }) => {
   return (
     <tr className="cmp-spell-table-row">
@@ -7,9 +5,9 @@ const SpellTableRow = ({ name, level, school, slug }) => {
       <td className="cmp-spell-table-row__cell">{level}</td>
       <td className="cmp-spell-table-row__cell">{school}</td>
       <td className="cmp-spell-table-row__cell">
-        <Link href={`/search/${slug}`}>
+        <a href={`/search/${slug}`}>
           View {name}
-        </Link>
+        </a>
       </td>
     </tr>
   );

@@ -1,36 +1,31 @@
 const OPEN5E_URL = 'https://api.open5e.com/v1/';
 
-const getSpells = async (levelQuery, classQuery, schoolQuery) => {
-  let pageCounter = 1;
-  let foundSpells = [];
-  let next;
+const getSpells = async (levelQuery, classQuery, schoolQuery, pageNumber) => {
+  let spellData = {
+    count: 0,
+    spells: [],
+  };
 
-  do {
-    let queryString = `spells?spell_level=${levelQuery}&school__iexact=${schoolQuery}&document__slug=wotc-srd&page=${pageCounter}`;
+  let queryString = `spells?spell_level=${levelQuery}&dnd_class__icontains=${classQuery}&school__iexact=${schoolQuery}&document__slug=wotc-srd&page=${pageNumber}`;
 
-    const response = await fetch(`${OPEN5E_URL}${queryString}`);
-    const data = await response.json();
+  const response = await fetch(`${OPEN5E_URL}${queryString}`);
+  const data = await response.json();
 
-    data.results.forEach((spell) => {
-      if (spell.dnd_class.includes(classQuery)) {
-        foundSpells.push({
-          name: spell.name,
-          level: spell.level,
-          school: spell.school,
-          slug: spell.slug,
-        });
-      }
+  spellData.count = data.count;
+  data.results.forEach((spell) => {
+    spellData.spells.push({
+      name: spell.name,
+      level: spell.level,
+      school: spell.school,
+      slug: spell.slug,
     });
+  });
 
-    next = data.next;
-    pageCounter += 1;
-  } while (next);
-
-  return foundSpells;
+  return spellData;
 }
 
 const getSpell = async (spellSlug) => {
-  let queryString = `spells?slug=${spellSlug}`;
+  let queryString = `spells?slug=${spellSlug}&document__slug=wotc-srd`;
 
   const response = await fetch(`${OPEN5E_URL}${queryString}`);
   const data = await response.json();
